@@ -45,9 +45,13 @@
                 <i class="el-icon-location"></i>
                 <span>Merchandise</span>
               </template>
-              <el-menu-item index="2-1" route="/merchandise">
+              <el-menu-item index="2-2" route="/brand">
                 <i class="el-icon-menu"></i>
-                <span slot="title">MerchandiseInfo</span>
+                <span slot="title">Brand</span>
+              </el-menu-item>
+              <el-menu-item index="2-1" route="/mdetail">
+                <i class="el-icon-menu"></i>
+                <span slot="title">Mdetail</span>
               </el-menu-item>
             </el-submenu>
 
@@ -58,9 +62,17 @@
                 <i class="el-icon-location"></i>
                 <span>Shopping</span>
               </template>
-              <el-menu-item index="2-1" route="/shopping">
+              <el-menu-item index="2-1" route="/shoppingInfo">
                 <i class="el-icon-menu"></i>
                 <span slot="title">ShoppingInfo</span>
+              </el-menu-item>
+              <el-menu-item index="2-1" route="/merchandisePage">
+                <i class="el-icon-menu"></i>
+                <span slot="title">MerchandisePage</span>
+              </el-menu-item>
+              <el-menu-item index="2-1" route="/shoppingCart">
+                <i class="el-icon-menu"></i>
+                <span slot="title">ShoppingCart</span>
               </el-menu-item>
             </el-submenu>
 
@@ -111,7 +123,7 @@
       <el-container>
         <!--右导航头-->
         <el-header>
-          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" >
+          <el-menu  class="el-menu-demo" mode="horizontal" >
             <el-menu-item index="1"><a href="/customerInfo" >myInfo</a></el-menu-item>
           <el-submenu index="2">
             <template slot="title">我的工作台</template>

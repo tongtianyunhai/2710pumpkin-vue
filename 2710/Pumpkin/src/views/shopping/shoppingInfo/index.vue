@@ -8,5 +8,5 @@
 
 </script>
 
-<style  src="./index.scss" lang="scss">
+<style src="./index.scss" lang="scss">
 </style>

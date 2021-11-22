@@ -3,12 +3,19 @@ import VueRouter from 'vue-router'
 
 import Login from "@/views/login/login";
 import Main from "@/views/main/index"
-import Shopping from '../views/shopping/index.vue'
+import ShoppingInfo from '../views/shopping/shoppingInfo/index.vue'
+  import MerchandisePage from '../views/shopping/merchandisePage/index.vue'
+import ShoppingCart from '../views/shopping/shoppingCart/index.vue'
+
 import Order from '../views/order/index.vue'
-import Merchandise from '../views/merchandise/index.vue'
+import CustomerOrder from '../views/customer/customerOrder/index.vue'
+
+import Mdetail from '../views/merchandise/mdetail/index.vue'
+import Brand from '../views/merchandise/brand/index.vue'
+
+
 import Manager from '../views/manager/index.vue'
 import CustomerInfo from '../views/customer/customerInfo/index.vue'
-import CustomerOrder from '../views/customer/customerOrder/index.vue'
 
 import Rank from '../views/rank/index.vue'
 
@@ -39,12 +46,17 @@ const routes = [
     name: 'Main',
     component: Main,
   children: [
-  //售后 gly
+  //meichandise gly
   {
-    path: '/merchandise',
-    name: 'Merchandise',
-    component: Merchandise
+    path: '/mdetail',
+    name: 'Mdetail',
+    component: Mdetail
   },
+    {
+      path: '/brand',
+      name: 'Brand',
+      component: Brand
+    },
     {
       path: '/manager',
       name: 'Manager',
@@ -69,10 +81,23 @@ const routes = [
       name: 'CustomerOrder',
       component: CustomerOrder
     },{
-      path: '/shopping',
-      name: 'Shopping',
-      component: Shopping
+      path: '/shoppingInfo',
+      name: 'ShoppingInfo',
+      component: ShoppingInfo
     },
+    {
+      path: '/merchandisePage',
+      name: 'MerchandisePage',
+      component: MerchandisePage
+    },
+    {
+      path: '/shoppingCart',
+      name: 'ShoppingCart',
+      component: ShoppingCart
+    },
+
+
+
   ]
 
   }
