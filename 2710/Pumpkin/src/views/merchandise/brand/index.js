@@ -84,7 +84,8 @@ let brand = {
 
                 this.total = response.total;
                 this.tableData = response.data;
-                console.log(this.tableData)
+                console.log("777"+this.tableData);
+                console.log("888"+localStorage.getItem("token"))
             });
         },
 

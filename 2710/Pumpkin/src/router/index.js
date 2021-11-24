@@ -1,22 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import Login from "@/views/login/login";
 import Main from "@/views/main/index"
 import ShoppingInfo from '../views/shopping/shoppingInfo/index.vue'
-  import MerchandisePage from '../views/shopping/merchandisePage/index.vue'
+import MerchandisePage from '../views/shopping/merchandisePage/index.vue'
 import ShoppingCart from '../views/shopping/shoppingCart/index.vue'
-
 import Order from '../views/order/index.vue'
 import CustomerOrder from '../views/customer/customerOrder/index.vue'
-
 import Mdetail from '../views/merchandise/mdetail/index.vue'
 import Brand from '../views/merchandise/brand/index.vue'
-
-
 import Manager from '../views/manager/index.vue'
 import CustomerInfo from '../views/customer/customerInfo/index.vue'
-
 import Rank from '../views/rank/index.vue'
 
 // imlport Home from '../views/Home.vue'
@@ -37,7 +31,7 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
   {
-    path: '/login',
+    path: '/',
     name: 'Login',
     component: Login
   },
@@ -45,7 +39,7 @@ const routes = [
     path: '/main',
     name: 'Main',
     component: Main,
-  children: [
+    children: [
   //meichandise gly
   {
     path: '/mdetail',
@@ -66,7 +60,8 @@ const routes = [
       path: '/rank',
       name: 'Rank',
       component: Rank
-    },  {
+    },
+      {
       path: '/order',
       name: 'Order',
       component: Order
@@ -80,7 +75,8 @@ const routes = [
       path: '/customerOrder',
       name: 'CustomerOrder',
       component: CustomerOrder
-    },{
+    },
+      {
       path: '/shoppingInfo',
       name: 'ShoppingInfo',
       component: ShoppingInfo
@@ -95,18 +91,21 @@ const routes = [
       name: 'ShoppingCart',
       component: ShoppingCart
     },
-
-
-
   ]
-
   }
 ]
 const router = new VueRouter({
-  mode: 'history',
   routes
 })
+router.beforeEach((to,from,next)=>{
+let token=localStorage.getItem("token");
+if(token||to.path==="/"){
+  next();
+}else{
+  next("/")
+}
 
+})
 
 export default router
 

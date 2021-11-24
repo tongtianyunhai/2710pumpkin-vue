@@ -1,25 +1,36 @@
+import {update,search} from '@/api/customer'
+
 let customerInfo = {
     data() {
         return {
-            form: {
-                name: '',
-                region: '',
-                date1: '',
-                date2: '',
-                delivery: false,
-                type: [],
-                resource: '',
-                desc: ''
-            },
-            //头像
-            imageUrl: '',
+            //find userInfo
+            tableData:[],
 
+            formData: {
+                nickname: '',
+                birthday: '',
+                country: '',
+                city: '',
+                zipcode: '',
+                street: '',
+                state: '',
+                url: '',
+                gender:'',
+                email:'',
+                uid:'',
+            },
+            dialogVisible: false,
+            //头像
+        };
+    },
             methods: {
-                onSubmit() {
+                async onSubmit() {
+                    this.formData.uid=localStorage.getItem("token");
+                    await update(this.formData);
                     console.log('submit!');
                 },
                 handleAvatarSuccess(res, file) {
-                    this.imageUrl = URL.createObjectURL(file.raw);
+                    this.formData.url = URL.createObjectURL(file.raw);
                 },
                 beforeAvatarUpload(file) {
                     const isJPG = file.type === 'image/jpeg';
@@ -32,14 +43,20 @@ let customerInfo = {
                         this.$message.error('上传头像图片大小不能超过 2MB!');
                     }
                     return isJPG && isLt2M;
-                }
+                },
 
-
-
-
-            }
-        }
+                async findPage(){
+                    search(localStorage.getItem("token")).then(response => {
+                        this.tableData = response;
+                        console.log(this.tableData[0].nickName);
+                        console.log("888"+localStorage.getItem("token"))
+                    });
+                },
+            },
+    created(){
+        this.findPage();
     }
-}
+};
+
 export default customerInfo;
 

@@ -149,8 +149,8 @@
                 width="33%"
         >
             <el-form ref="form"  :model="formData" label-width="100px" >
-                <el-form-item label="brandName">
-                    <el-input v-model="formData.sortName"></el-input>
+                <el-form-item label="merchandiseName">
+                    <el-input v-model="formData.mName"></el-input>
                 </el-form-item>
 
 
