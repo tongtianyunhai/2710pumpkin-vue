@@ -57,7 +57,7 @@ let brand = {
         async searchType(){
             selectType().then(response => {
                 this.options = response;
-                console.log(this.tableData)
+                console.log(this.tableData[0].sid)
             });
         },
 
