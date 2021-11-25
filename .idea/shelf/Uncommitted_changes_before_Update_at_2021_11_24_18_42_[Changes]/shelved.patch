@@ -1,0 +1,356 @@
+Index: 2710/Pumpkin/src/views/order/index.vue
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><template>\r\n    <div >\r\n        <el-header>OrderInfo==========</el-header>\r\n    </div>\r\n</template>\r\n\r\n<script>\r\n\r\n</script>\r\n\r\n<style  src=\"./index.scss\" lang=\"scss\">\r\n</style>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2710/Pumpkin/src/views/order/index.vue b/2710/Pumpkin/src/views/order/index.vue
+--- a/2710/Pumpkin/src/views/order/index.vue	(revision 9ccbc235d81026fbdfa4c52d40c5b93fbb7d3b6a)
++++ b/2710/Pumpkin/src/views/order/index.vue	(date 1637783263889)
+@@ -1,12 +1,48 @@
+ <template>
+-    <div >
+-        <el-header>OrderInfo==========</el-header>
+-    </div>
++  <el-table
++      :data="tableData"
++      style="width: 100%">
++    <el-table-column
++        prop="merchandiseId"
++        label="merchandiseId"
++        width="180">
++    </el-table-column>
++    <el-table-column
++        prop="date"
++        label="date"
++        width="180">
++    </el-table-column>
++    <el-table-column
++        prop="price"
++        label="price"
++        width="180">
++    </el-table-column>
++    <el-table-column
++        prop="quantity"
++        label="quantity"
++        width="180">
++    </el-table-column>
++    <el-table-column
++        prop="shipping"
++        label="shipping"
++        width="180">
++    </el-table-column>
++    <el-table-column
++        prop="orderId"
++        label="orderId"
++        width="180">
++    </el-table-column>
++    <el-table-column
++        prop="remark"
++        label="remark">
++    </el-table-column>
++  </el-table>
+ </template>
+ 
+ <script>
+-
++import order from './index'
++export default order
+ </script>
+ 
+ <style  src="./index.scss" lang="scss">
+-</style>
+\ No newline at end of file
++</style>
+Index: 2710/Pumpkin/src/views/order/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2710/Pumpkin/src/views/order/index.js b/2710/Pumpkin/src/views/order/index.js
+--- a/2710/Pumpkin/src/views/order/index.js	(revision 9ccbc235d81026fbdfa4c52d40c5b93fbb7d3b6a)
++++ b/2710/Pumpkin/src/views/order/index.js	(date 1637796936827)
+@@ -1,0 +1,35 @@
++import {searchPage} from '@/api/order'
++
++let order = {
++    data() {
++        return {
++            tableData: [{
++                merchandiseId: '01test10',
++                date: 'test-test-test',
++                price: 'test.00',
++                quantity: '10',
++                shipping: '10.05',
++                orderId: '1test',
++                remark: 'remarkremarkremarkremarkremarkremarkremarkremarkremarkremark'
++            }]
++        }
++    },
++
++    methods:{
++        async findPage(){
++            searchPage(this.searchParams).then(response => {
++
++                this.total = response.total;
++                this.tableData = response.data;
++                this.customerId=localStorage.getItem("token");
++                console.log(this.customerId);
++
++            });
++        }
++    },
++
++    created(){
++        this.findPage();
++    }
++}
++export default order;
+Index: 2710/Pumpkin/src/views/merchandise/brand/index.vue
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><template>\r\n  <div class=\"brand-box\">\r\n    <!--查询表单-->\r\n    <div class=\"search-box\">\r\n      <el-form :inline=\"true\" class=\"demo-form-inline\" size=\"mini\">\r\n        <el-form-item label=\"BrandName\">\r\n          <el-input placeholder=\"BrandName\"  v-model=\"searchParams.sortName\"></el-input>\r\n        </el-form-item>\r\n\r\n<!--        <el-form-item label=\"日期\">-->\r\n<!--          <el-date-picker-->\r\n<!--              v-model=\"value2\"-->\r\n<!--              type=\"datetimerange\"-->\r\n<!--              :picker-options=\"pickerOptions\"-->\r\n<!--              range-separator=\"-\"-->\r\n<!--              start-placeholder=\"开始日期\"-->\r\n<!--              end-placeholder=\"结束日期\"-->\r\n<!--              align=\"left\">-->\r\n<!--          </el-date-picker>-->\r\n<!--        </el-form-item>-->\r\n        <el-form-item>\r\n          <el-button type=\"primary\" @click=\"findPage\">search</el-button>\r\n          <el-button type=\"warning\" @click=\"resetForm\">reset</el-button>\r\n          <el-button type=\"primary\" icon=\"el-icon-edit\" size=\"mini\" @click=\"dialogVisible = true,formData={}\">addBrand</el-button>\r\n        </el-form-item>\r\n      </el-form>\r\n    </div>\r\n    <!--操作按钮-->\r\n<!--    <div class=\"crud-box\">-->\r\n\r\n<!--      <el-button type=\"success\" icon=\"el-icon-edit\" size=\"mini\">修改</el-button>-->\r\n<!--      <el-button type=\"danger\" icon=\"el-icon-delete\" size=\"mini\">删除</el-button>-->\r\n<!--    </div>-->\r\n<!--    table展示数据-->\r\n    <div class=\"table-box\">\r\n      <el-table\r\n          :data=\"tableData\"\r\n          style=\"width: 100%\"\r\n          @selection-change=\"checkBoxSelectionChange\"\r\n      >\r\n\r\n        <el-table-column\r\n            type=\"selection\"\r\n            width=\"55\">\r\n        </el-table-column>\r\n        <el-table-column\r\n            align=\"center\"\r\n            prop=\"sortName\"\r\n            label=\"BrandName\"\r\n            width=\"180\">\r\n        </el-table-column>\r\n        <el-table-column\r\n            align=\"center\"\r\n            prop=\"sortBn\"\r\n            label=\"BrandNumber\"\r\n            width=\"180\">\r\n        </el-table-column>\r\n        <el-table-column\r\n            align=\"center\"\r\n            prop=\"pictureAddress\"\r\n            label=\"Picture\"\r\n            width=\"180\">\r\n        </el-table-column>\r\n\r\n\r\n        <el-table-column\r\n                align=\"center\"\r\n                prop=\"parentid\"\r\n                label=\"TypeId\"\r\n                width=\"180\">\r\n        </el-table-column>\r\n        <el-table-column\r\n                align=\"center\"\r\n                prop=\"isvalid\"\r\n                label=\"Isvalid\"\r\n                width=\"180\">\r\n        </el-table-column>\r\n\r\n        <el-table-column\r\n            align=\"center\"\r\n            prop=\"address\"\r\n            label=\"operation\">\r\n          <template v-slot=\"obj\">\r\n            <el-button type=\"success\" icon=\"el-icon-edit\" size=\"mini\"\r\n            @click=\"clearAndAdd(obj.row.sid),dialogVisible2=true\"></el-button>\r\n            <el-popconfirm\r\n                confirm-button-text='Confirm'\r\n                cancel-button-text='Cancel'\r\n                @confirm=\"deleteById\"\r\n                icon=\"el-icon-info\"\r\n                icon-color=\"red\"\r\n                title=\"are you sure to delete？\"\r\n            >\r\n              <el-button slot=\"reference\" type=\"danger\" icon=\"el-icon-delete\" size=\"mini\"\r\n                         @click=\"formData3.sid=obj.row.sid\"></el-button>\r\n            </el-popconfirm>\r\n          </template>\r\n\r\n\r\n        </el-table-column>\r\n      </el-table>\r\n    </div>\r\n    <!--分页-->\r\n    <div class=\"page-box\">\r\n      <el-pagination\r\n          background\r\n          :current-page=\"searchParams.currentPage\"\r\n          :page-size=\"searchParams.pageSize\"\r\n          layout=\"prev, pager, next\"\r\n          @current-change=\"currentPageChange\"\r\n          :total=\"total\">\r\n      </el-pagination>\r\n    </div>\r\n\r\n\r\n    <!--弹框add-->\r\n    <el-dialog\r\n        title=\"Add New Brand\"\r\n        :visible.sync=\"dialogVisible\"\r\n        width=\"33%\"\r\n    >\r\n      <el-form ref=\"form\"  :model=\"formData\" label-width=\"100px\" >\r\n        <el-form-item label=\"brandName\">\r\n          <el-input v-model=\"formData.sortName\"></el-input>\r\n        </el-form-item>\r\n\r\n\r\n\r\n\r\n        <el-form-item label=\"picture\">\r\n          <el-upload\r\n                  class=\"upload-demo\"\r\n                  action=\"https://jsonplaceholder.typicode.com/posts/\"\r\n                  :on-preview=\"handlePreview\"\r\n                  :on-remove=\"handleRemove\"\r\n                  :before-remove=\"beforeRemove\"\r\n                  multiple\r\n                  :limit=\"1\"\r\n                  :on-exceed=\"handleExceed\"\r\n                  :file-list=\"fileList\">\r\n          <el-button type=\"primary\">upload</el-button>\r\n            <div slot=\"tip\" class=\"el-upload__tip\">jpg/png file，and not beyond 500kb</div>\r\n          </el-upload>\r\n        </el-form-item>\r\n\r\n        <el-form-item label=\"TypeOrNot\">\r\n          <el-select  v-model=\"formData.isparent\" >\r\n            <el-option label=\"Not\" value=\"0\"></el-option>\r\n          </el-select>\r\n        </el-form-item>\r\n\r\n        <el-form-item label=\"brandNumber\">\r\n          <el-input v-model=\"formData.sortBn\"></el-input>\r\n        </el-form-item>\r\n\r\n        <el-form-item label=\"BrandType\">\r\n          <el-select v-model=\"formData.parentid\" placeholder=\"select type\" @change=\"searchType\">\r\n            <el-option\r\n                    v-for=\"item in options\"\r\n                    :key=\"item.isparent\"\r\n                    :label=\"item.sortName\"\r\n                    :value=\"item.isparent\"\r\n            ></el-option>\r\n          </el-select>\r\n        </el-form-item>\r\n\r\n\r\n        <el-form-item label=\"createBy\">\r\n          <el-input v-model=\"formData.createBy\"></el-input>\r\n        </el-form-item>\r\n        <el-form-item label=\"createTime\">\r\n          <el-date-picker type=\"date\" v-model=\"formData.createTime\"></el-date-picker>\r\n        </el-form-item>\r\n        <el-form-item label=\"isValid\">\r\n          <el-select  v-model=\"formData.isvalid\" >\r\n            <el-option label=\"valid\" value=\"1\"></el-option>\r\n          </el-select>\r\n        </el-form-item>\r\n      </el-form>\r\n\r\n\r\n      <span slot=\"footer\" class=\"dialog-footer\">\r\n        <el-button size=\"mini\" @click=\"dialogVisible = false\">cancel</el-button>\r\n        <el-button type=\"primary\" size=\"mini\" @click=\"dialogVisible = false,add()\">confirm</el-button>\r\n  </span>\r\n    </el-dialog>\r\n\r\n    <!--弹框edit-->\r\n    <el-dialog\r\n        title=\"editBrand\"\r\n        :visible.sync=\"dialogVisible2\"\r\n        width=\"33%\"\r\n    >\r\n      <el-form ref=\"form\" label-width=\"110px\" size=\"small\" :model=\"formData\" >\r\n        <el-form-item label=\"BrandId\">\r\n          <el-input v-model=\"formData.sid\" disabled=\"\"></el-input>\r\n        </el-form-item>\r\n        <el-form-item label=\"BrandName\">\r\n          <el-input v-model=\"formData.sortName\"></el-input>\r\n        </el-form-item>\r\n        <el-form-item label=\"Type\">\r\n          <el-input v-model=\"formData.parentid\"></el-input>\r\n        </el-form-item>\r\n        <el-form-item label=\"BrandNumber\">\r\n          <el-input v-model=\"formData.sortBn\"></el-input>\r\n        </el-form-item>\r\n        <el-form-item label=\"Picture\">\r\n          <el-input v-model=\"formData.url\"></el-input>\r\n        </el-form-item>\r\n      </el-form>\r\n\r\n\r\n      <span slot=\"footer\" class=\"dialog-footer\">\r\n        <el-button size=\"mini\" @click=\"dialogVisible2 = false\">cancel</el-button>\r\n        <el-button type=\"primary\" size=\"mini\" @click=\"dialogVisible2 = false,Edit()\">confirm</el-button>\r\n  </span>\r\n    </el-dialog>\r\n\r\n  </div>\r\n</template>\r\n\r\n<script>\r\nimport brand from './index'\r\n\r\nexport default brand;\r\n</script>\r\n\r\n<style scoped src=\"./indexs.scss\" lang=\"scss\">\r\n</style>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2710/Pumpkin/src/views/merchandise/brand/index.vue b/2710/Pumpkin/src/views/merchandise/brand/index.vue
+--- a/2710/Pumpkin/src/views/merchandise/brand/index.vue	(revision 9ccbc235d81026fbdfa4c52d40c5b93fbb7d3b6a)
++++ b/2710/Pumpkin/src/views/merchandise/brand/index.vue	(date 1637782296686)
+@@ -226,4 +226,4 @@
+ </script>
+ 
+ <style scoped src="./indexs.scss" lang="scss">
+-</style>
+\ No newline at end of file
++</style>
+Index: 2710/Pumpkin/src/views/merchandise/brand/index.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import {searchPage,deleteBrandById,addEntity,update,selectType} from '@/api/brand'\r\nlet brand = {\r\n    data() {\r\n        return {\r\n            //日期变量名\r\n            value2: '',\r\n            //table的list\r\n            tableData: [],\r\n            dialogVisible:false,\r\n            total:0,\r\n            searchParams: {\r\n                currentPage: 1,//当前页\r\n                pageSize: 3,//每页显示条数\r\n                sortName: ''//品牌名称\r\n            },\r\n             labelposition: 'left',\r\n            //修改表单\r\n            formData:{},//新增表单信息\r\n            fileList:[{\r\n               name: '',\r\n               url: '',\r\n            }],\r\n            formData2:{\r\n                sortName:'',\r\n                sortSize:'',\r\n                sortColor:'',\r\n                sortBn:'',\r\n                parentid:'',\r\n                createBy:'',\r\n                createTime:'',\r\n                isparent:'',\r\n            },\r\n            formData3:{},//删除\r\n            dialogVisible2: false,\r\n\r\n            //upload picture\r\n\r\n\r\n            //select type\r\n            options: [],\r\n        };\r\n    },\r\n    methods:{\r\n        handleRemove(file, fileList) {\r\n            console.log(file, fileList);\r\n        },\r\n        handlePreview(file) {\r\n            console.log(file);\r\n        },\r\n        handleExceed(files, fileList) {\r\n            this.$message.warning(`only accept 1 file，this time choose ${files.length} file，total choose ${fileList.length} file`);\r\n        },\r\n        beforeRemove(file, fileList) {\r\n            return this.$confirm(`are you sure to remove ${ file.name }？`);\r\n        },\r\n        //\r\n        async searchType(){\r\n            selectType().then(response => {\r\n                this.options = response;\r\n                console.log(this.tableData)\r\n            });\r\n        },\r\n\r\n\r\n\r\n        clearAndAdd(sid){\r\n            this.tableData.forEach(data=>{\r\n                if (data.sid === sid) {\r\n                    this.formData = data;\r\n                }\r\n            })\r\n        },\r\n        //复选框的change事件，删除和修改拿到id\r\n        async checkBoxSelectionChange(){\r\n\r\n        },\r\n        async currentPageChange(currentPage){\r\n            //console.log(currentPage);\r\n            this.searchParams.currentPage = currentPage;\r\n            await this.findPage();\r\n        },\r\n        async findPage(){\r\n            searchPage(this.searchParams).then(response => {\r\n\r\n                this.total = response.total;\r\n                this.tableData = response.data;\r\n                console.log(this.tableData)\r\n            });\r\n        },\r\n\r\n        async deleteById(){\r\n            console.log(this.formData3.sid)\r\n            await deleteBrandById(this.formData3.sid);\r\n\r\n            await this.findPage();\r\n        },\r\n        async resetForm(){\r\n            this.searchParams={  currentPage :1, pageSize:5};\r\n        },\r\n        async add(){\r\n            await addEntity(this.formData);\r\n            console.log(\"999\"+this.fileList[0].url);\r\n            await this.findPage();\r\n        },\r\n        async Edit(){\r\n            console.log(this.formData)\r\n            await update(this.formData);\r\n            await this.findPage();\r\n        }\r\n    },\r\n    created(){\r\n        this.findPage();\r\n        this.searchType();\r\n    }\r\n};\r\n\r\nexport default brand;
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2710/Pumpkin/src/views/merchandise/brand/index.js b/2710/Pumpkin/src/views/merchandise/brand/index.js
+--- a/2710/Pumpkin/src/views/merchandise/brand/index.js	(revision 9ccbc235d81026fbdfa4c52d40c5b93fbb7d3b6a)
++++ b/2710/Pumpkin/src/views/merchandise/brand/index.js	(date 1637781004734)
+@@ -84,7 +84,7 @@
+ 
+                 this.total = response.total;
+                 this.tableData = response.data;
+-                console.log(this.tableData)
++                console.log(this.tableData[0].sid)
+             });
+         },
+ 
+@@ -114,4 +114,4 @@
+     }
+ };
+ 
+-export default brand;
+\ No newline at end of file
++export default brand;
+Index: 2710/Pumpkin/package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2710/Pumpkin/package-lock.json b/2710/Pumpkin/package-lock.json
+--- a/2710/Pumpkin/package-lock.json	(revision 9ccbc235d81026fbdfa4c52d40c5b93fbb7d3b6a)
++++ b/2710/Pumpkin/package-lock.json	(date 1637771995921)
+@@ -1752,12 +1752,50 @@
+           "integrity": "sha1-/q7SVZc9LndVW4PbwIhRpsY1IPo=",
+           "dev": true
+         },
++        "ansi-styles": {
++          "version": "4.3.0",
++          "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz",
++          "integrity": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==",
++          "dev": true,
++          "optional": true,
++          "requires": {
++            "color-convert": "^2.0.1"
++          }
++        },
+         "camelcase": {
+           "version": "5.3.1",
+           "resolved": "https://registry.nlark.com/camelcase/download/camelcase-5.3.1.tgz",
+           "integrity": "sha1-48mzFWnhBoEd8kL3FXJaH0xJQyA=",
+           "dev": true
+         },
++        "chalk": {
++          "version": "4.1.2",
++          "resolved": "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz",
++          "integrity": "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==",
++          "dev": true,
++          "optional": true,
++          "requires": {
++            "ansi-styles": "^4.1.0",
++            "supports-color": "^7.1.0"
++          }
++        },
++        "color-convert": {
++          "version": "2.0.1",
++          "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
++          "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
++          "dev": true,
++          "optional": true,
++          "requires": {
++            "color-name": "~1.1.4"
++          }
++        },
++        "color-name": {
++          "version": "1.1.4",
++          "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
++          "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==",
++          "dev": true,
++          "optional": true
++        },
+         "css-loader": {
+           "version": "3.6.0",
+           "resolved": "https://registry.nlark.com/css-loader/download/css-loader-3.6.0.tgz?cache=0&sync_timestamp=1626725852525&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fcss-loader%2Fdownload%2Fcss-loader-3.6.0.tgz",
+@@ -1779,6 +1817,13 @@
+             "semver": "^6.3.0"
+           }
+         },
++        "has-flag": {
++          "version": "4.0.0",
++          "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
++          "integrity": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==",
++          "dev": true,
++          "optional": true
++        },
+         "icss-utils": {
+           "version": "4.1.1",
+           "resolved": "https://registry.npm.taobao.org/icss-utils/download/icss-utils-4.1.1.tgz",
+@@ -1837,6 +1882,42 @@
+           "requires": {
+             "minipass": "^3.1.1"
+           }
++        },
++        "supports-color": {
++          "version": "7.2.0",
++          "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz",
++          "integrity": "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==",
++          "dev": true,
++          "optional": true,
++          "requires": {
++            "has-flag": "^4.0.0"
++          }
++        },
++        "vue-loader-v16": {
++          "version": "npm:vue-loader@16.8.3",
++          "resolved": "https://registry.npmjs.org/vue-loader/-/vue-loader-16.8.3.tgz",
++          "integrity": "sha512-7vKN45IxsKxe5GcVCbc2qFU5aWzyiLrYJyUuMz4BQLKctCj/fmCa0w6fGiiQ2cLFetNcek1ppGJQDCup0c1hpA==",
++          "dev": true,
++          "optional": true,
++          "requires": {
++            "chalk": "^4.1.0",
++            "hash-sum": "^2.0.0",
++            "loader-utils": "^2.0.0"
++          },
++          "dependencies": {
++            "loader-utils": {
++              "version": "2.0.2",
++              "resolved": "https://registry.npmjs.org/loader-utils/-/loader-utils-2.0.2.tgz",
++              "integrity": "sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==",
++              "dev": true,
++              "optional": true,
++              "requires": {
++                "big.js": "^5.2.2",
++                "emojis-list": "^3.0.0",
++                "json5": "^2.1.2"
++              }
++            }
++          }
+         }
+       }
+     },
+@@ -11828,87 +11909,6 @@
+         }
+       }
+     },
+-    "vue-loader-v16": {
+-      "version": "npm:vue-loader@16.5.0",
+-      "resolved": "https://registry.nlark.com/vue-loader/download/vue-loader-16.5.0.tgz?cache=0&sync_timestamp=1628666904882&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvue-loader%2Fdownload%2Fvue-loader-16.5.0.tgz",
+-      "integrity": "sha1-CcTgcSRmiZ40uZpoZSTxkWX7KJI=",
+-      "dev": true,
+-      "optional": true,
+-      "requires": {
+-        "chalk": "^4.1.0",
+-        "hash-sum": "^2.0.0",
+-        "loader-utils": "^2.0.0"
+-      },
+-      "dependencies": {
+-        "ansi-styles": {
+-          "version": "4.3.0",
+-          "resolved": "https://registry.nlark.com/ansi-styles/download/ansi-styles-4.3.0.tgz?cache=0&sync_timestamp=1618995588464&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fansi-styles%2Fdownload%2Fansi-styles-4.3.0.tgz",
+-          "integrity": "sha1-7dgDYornHATIWuegkG7a00tkiTc=",
+-          "dev": true,
+-          "optional": true,
+-          "requires": {
+-            "color-convert": "^2.0.1"
+-          }
+-        },
+-        "chalk": {
+-          "version": "4.1.2",
+-          "resolved": "https://registry.nlark.com/chalk/download/chalk-4.1.2.tgz",
+-          "integrity": "sha1-qsTit3NKdAhnrrFr8CqtVWoeegE=",
+-          "dev": true,
+-          "optional": true,
+-          "requires": {
+-            "ansi-styles": "^4.1.0",
+-            "supports-color": "^7.1.0"
+-          }
+-        },
+-        "color-convert": {
+-          "version": "2.0.1",
+-          "resolved": "https://registry.npm.taobao.org/color-convert/download/color-convert-2.0.1.tgz",
+-          "integrity": "sha1-ctOmjVmMm9s68q0ehPIdiWq9TeM=",
+-          "dev": true,
+-          "optional": true,
+-          "requires": {
+-            "color-name": "~1.1.4"
+-          }
+-        },
+-        "color-name": {
+-          "version": "1.1.4",
+-          "resolved": "https://registry.npm.taobao.org/color-name/download/color-name-1.1.4.tgz",
+-          "integrity": "sha1-wqCah6y95pVD3m9j+jmVyCbFNqI=",
+-          "dev": true,
+-          "optional": true
+-        },
+-        "has-flag": {
+-          "version": "4.0.0",
+-          "resolved": "https://registry.nlark.com/has-flag/download/has-flag-4.0.0.tgz?cache=0&sync_timestamp=1626715879199&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fhas-flag%2Fdownload%2Fhas-flag-4.0.0.tgz",
+-          "integrity": "sha1-lEdx/ZyByBJlxNaUGGDaBrtZR5s=",
+-          "dev": true,
+-          "optional": true
+-        },
+-        "loader-utils": {
+-          "version": "2.0.0",
+-          "resolved": "https://registry.nlark.com/loader-utils/download/loader-utils-2.0.0.tgz?cache=0&sync_timestamp=1618846850760&other_urls=https%3A%2F%2Fregistry.nlark.com%2Floader-utils%2Fdownload%2Floader-utils-2.0.0.tgz",
+-          "integrity": "sha1-5MrOW4FtQloWa18JfhDNErNgZLA=",
+-          "dev": true,
+-          "optional": true,
+-          "requires": {
+-            "big.js": "^5.2.2",
+-            "emojis-list": "^3.0.0",
+-            "json5": "^2.1.2"
+-          }
+-        },
+-        "supports-color": {
+-          "version": "7.2.0",
+-          "resolved": "https://registry.nlark.com/supports-color/download/supports-color-7.2.0.tgz",
+-          "integrity": "sha1-G33NyzK4E4gBs+R4umpRyqiWSNo=",
+-          "dev": true,
+-          "optional": true,
+-          "requires": {
+-            "has-flag": "^4.0.0"
+-          }
+-        }
+-      }
+-    },
+     "vue-router": {
+       "version": "3.5.2",
+       "resolved": "https://registry.nlark.com/vue-router/download/vue-router-3.5.2.tgz?cache=0&sync_timestamp=1628495505697&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fvue-router%2Fdownload%2Fvue-router-3.5.2.tgz",
