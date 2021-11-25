@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77f6b968-a0c4-405d-b23e-97691170dff6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/2710/Pumpkin/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/2710/Pumpkin/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2710/Pumpkin/src/views/merchandise/brand/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/2710/Pumpkin/src/views/merchandise/brand/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2710/Pumpkin/src/views/merchandise/brand/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/2710/Pumpkin/src/views/merchandise/brand/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2710/Pumpkin/src/views/order/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/2710/Pumpkin/src/views/order/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2710/Pumpkin/src/views/order/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/2710/Pumpkin/src/views/order/index.vue" afterDir="false" />
+    <list default="true" id="77f6b968-a0c4-405d-b23e-97691170dff6" name="Changes" comment="/11.25 Why">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +60,16 @@
       <option name="presentableId" value="Default" />
       <updated>1637771666103</updated>
       <workItem from="1637771667308" duration="13531000" />
-      <workItem from="1637854088385" duration="3609000" />
+      <workItem from="1637854088385" duration="4503000" />
     </task>
+    <task id="LOCAL-00001" summary="/11.25 Why">
+      <created>1637858173937</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637858173937</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -82,5 +86,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="/11.25 Why" />
+    <option name="LAST_COMMIT_MESSAGE" value="/11.25 Why" />
   </component>
 </project>
