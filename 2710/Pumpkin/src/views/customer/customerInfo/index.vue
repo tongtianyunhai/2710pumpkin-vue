@@ -2,17 +2,20 @@
     <div >
 
         <el-dialog
-                title="Add New Brand"
+                title="modify your information"
                 :visible.sync="dialogVisible"
                 width="33%"
         >
         <el-container align="center">
-        <el-form ref="form" :model="formData" label-width="80px" >
+        <el-form ref="form" :model="formData[0]" label-width="80px" >
             <el-form-item label="nickName">
-                <el-input v-model="formData.name"></el-input>
+                <el-input v-model="formData[0].nickName"></el-input>
+            </el-form-item>
+            <el-form-item label="email">
+                <el-input v-model="formData[0].email"></el-input>
             </el-form-item>
             <el-form-item label="Gender">
-                <el-select v-model="formData.gender" placeholder="selectGender">
+                <el-select v-model="formData[0].gender" placeholder="selectGender">
                     <el-option label="male" value="1"></el-option>
                     <el-option label="female" value="2"></el-option>
                     <el-option label="other" value="3"></el-option>
@@ -20,25 +23,25 @@
             </el-form-item>
             <el-form-item label="Birthday">
             <el-date-picker
-                v-model="formData.birthday"
+                v-model="formData[0].birthday"
                 type="date"
                 placeholder="selectDate">
         </el-date-picker>
             </el-form-item>
             <el-form-item label="Country">
-                <el-input v-model="formData.country"></el-input>
+                <el-input v-model="formData[0].country"></el-input>
             </el-form-item>
             <el-form-item label="State">
-                <el-input v-model="formData.state"></el-input>
+                <el-input v-model="formData[0].state"></el-input>
             </el-form-item>
             <el-form-item label="City">
-                <el-input v-model="formData.city"></el-input>
+                <el-input v-model="formData[0].city"></el-input>
             </el-form-item>
             <el-form-item label="Zipcode">
-                <el-input v-model="formData.zipcode"></el-input>
+                <el-input v-model="formData[0].zipcode"></el-input>
             </el-form-item>
             <el-form-item label="Street">
-                <el-input v-model="formData.street"></el-input>
+                <el-input v-model="formData[0].street"></el-input>
             </el-form-item>
             <el-form-item label="Picture">
             <el-upload
@@ -47,36 +50,36 @@
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload">
-                <img v-if="formData.url" :src="formData.url" class="avatar">
+                <img v-if="formData[0].url" :src="formData[0].url" class="avatar">
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
             </el-form-item>
 
             <el-form-item>
                 <el-button @click="dialogVisible=false">cancel</el-button>
-                <el-button type="primary" @click="onSubmit,dialogVisible=false">confirm</el-button>
+                <el-button type="primary" @click="onSubmit(),dialogVisible=false">confirm</el-button>
             </el-form-item>
         </el-form>
         </el-container>
         </el-dialog>
 
         <el-descriptions title="MyInfo" direction="vertical" :column="4" border :data="tableData" >
-            <el-descriptions-item label="userName">{{""+tableData[0].userName}}</el-descriptions-item>
-            <el-descriptions-item label="nickName">{{""+tableData[0].nickName}}</el-descriptions-item>
-            <el-descriptions-item label="gender">{{""+tableData[0].gender}}</el-descriptions-item>
-            <el-descriptions-item label="picture">{{""+tableData[0].url}}</el-descriptions-item>
-            <el-descriptions-item label="star">{{""+tableData[0].star}}</el-descriptions-item>
-            <el-descriptions-item label="email">{{""+tableData[0].email}}</el-descriptions-item>
-            <el-descriptions-item label="country">{{""+tableData[0].country}}</el-descriptions-item>
-            <el-descriptions-item label="state">{{""+tableData[0].state}}</el-descriptions-item>
-            <el-descriptions-item label="city">{{""+tableData[0].city}}</el-descriptions-item>
-            <el-descriptions-item label="street">{{""+tableData[0].street}}</el-descriptions-item>
-            <el-descriptions-item label="zipcode">{{""+tableData[0].zipcode}}</el-descriptions-item>
-            <el-descriptions-item label="birthday">{{""+tableData[0].birthday}}</el-descriptions-item>
-            <el-descriptions-item label="balance">{{""+tableData[0].balance}}</el-descriptions-item>
+            <el-descriptions-item label="userName">{{tableData[0].userName}}</el-descriptions-item>
+            <el-descriptions-item label="nickName">{{tableData[0].nickName}}</el-descriptions-item>
+            <el-descriptions-item label="gender">{{tableData[0].gender}}</el-descriptions-item>
+            <el-descriptions-item label="picture">{{tableData[0].url}}</el-descriptions-item>
+            <el-descriptions-item label="star">{{tableData[0].star}}</el-descriptions-item>
+            <el-descriptions-item label="email">{{tableData[0].email}}</el-descriptions-item>
+            <el-descriptions-item label="country">{{tableData[0].country}}</el-descriptions-item>
+            <el-descriptions-item label="state">{{tableData[0].state}}</el-descriptions-item>
+            <el-descriptions-item label="city">{{tableData[0].city}}</el-descriptions-item>
+            <el-descriptions-item label="street">{{tableData[0].street}}</el-descriptions-item>
+            <el-descriptions-item label="zipcode">{{tableData[0].zipcode}}</el-descriptions-item>
+            <el-descriptions-item label="birthday">{{tableData[0].birthday}}</el-descriptions-item>
+            <el-descriptions-item label="balance">{{tableData[0].balance}}</el-descriptions-item>
         </el-descriptions>
         <el-button type="success" icon="el-icon-edit" size="mini"
-                   @click="dialogVisible=true">modify</el-button>
+                   @click="dialogVisible=true,clearAndAdd()">modify</el-button>
 
     </div>
 </template>

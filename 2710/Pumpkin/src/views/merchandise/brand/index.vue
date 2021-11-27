@@ -22,6 +22,7 @@
           <el-button type="primary" @click="findPage">search</el-button>
           <el-button type="warning" @click="resetForm">reset</el-button>
           <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible = true,formData={}">addBrand</el-button>
+          <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible3 = true,formData={}">addSort</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -38,7 +39,6 @@
           style="width: 100%"
           @selection-change="checkBoxSelectionChange"
       >
-
         <el-table-column
             type="selection"
             width="55">
@@ -61,8 +61,6 @@
             label="Picture"
             width="180">
         </el-table-column>
-
-
         <el-table-column
                 align="center"
                 prop="parentid"
@@ -71,11 +69,10 @@
         </el-table-column>
         <el-table-column
                 align="center"
-                prop="isvalid"
-                label="Isvalid"
+                prop="isvaild"
+                label="Isvaild"
                 width="180">
         </el-table-column>
-
         <el-table-column
             align="center"
             prop="address"
@@ -95,8 +92,6 @@
                          @click="formData3.sid=obj.row.sid"></el-button>
             </el-popconfirm>
           </template>
-
-
         </el-table-column>
       </el-table>
     </div>
@@ -113,7 +108,7 @@
     </div>
 
 
-    <!--弹框add-->
+    <!--弹框addBrand-->
     <el-dialog
         title="Add New Brand"
         :visible.sync="dialogVisible"
@@ -123,10 +118,6 @@
         <el-form-item label="brandName">
           <el-input v-model="formData.sortName"></el-input>
         </el-form-item>
-
-
-
-
         <el-form-item label="picture">
           <el-upload
                   class="upload-demo"
@@ -142,18 +133,15 @@
             <div slot="tip" class="el-upload__tip">jpg/png file，and not beyond 500kb</div>
           </el-upload>
         </el-form-item>
-
-        <el-form-item label="TypeOrNot">
-          <el-select  v-model="formData.isparent" >
+        <el-form-item label="SortOrNot"  >
+          <el-select  v-model="formData.isparent"  placeholder="select">
             <el-option label="Not" value="0"></el-option>
           </el-select>
         </el-form-item>
-
         <el-form-item label="brandNumber">
           <el-input v-model="formData.sortBn"></el-input>
         </el-form-item>
-
-        <el-form-item label="BrandType">
+        <el-form-item label="SortName">
           <el-select v-model="formData.parentid" placeholder="select type" @change="searchType">
             <el-option
                     v-for="item in options"
@@ -163,27 +151,69 @@
             ></el-option>
           </el-select>
         </el-form-item>
-
-
         <el-form-item label="createBy">
           <el-input v-model="formData.createBy"></el-input>
         </el-form-item>
         <el-form-item label="createTime">
           <el-date-picker type="date" v-model="formData.createTime"></el-date-picker>
         </el-form-item>
-        <el-form-item label="isValid">
-          <el-select  v-model="formData.isvalid" >
-            <el-option label="valid" value="1"></el-option>
+        <el-form-item label="isVaild">
+          <el-select  v-model="formData.isvaild"  placeholder="select">
+            <el-option label="vaild" value="1"></el-option>
           </el-select>
         </el-form-item>
       </el-form>
-
-
       <span slot="footer" class="dialog-footer">
         <el-button size="mini" @click="dialogVisible = false">cancel</el-button>
         <el-button type="primary" size="mini" @click="dialogVisible = false,add()">confirm</el-button>
   </span>
     </el-dialog>
+
+    <!--弹框addSort-->
+    <el-dialog
+            title="Add New Brand"
+            :visible.sync="dialogVisible3"
+            width="33%"
+    >
+      <el-form ref="form"  :model="formData4" label-width="100px" >
+        <el-form-item label="SortName">
+          <el-input v-model="formData4.sortName"></el-input>
+        </el-form-item>
+
+        <!--<el-form-item label="SortOrNot"  >-->
+          <!--<el-select  v-model="formData4.isparent"  placeholder="select">-->
+            <!--<el-option label="Not" value="0"></el-option>-->
+          <!--</el-select>-->
+        <!--</el-form-item>-->
+
+        <el-form-item label="SortBn">
+          <el-select v-model="formData4.sortBn" placeholder="select" @change="searchType">
+            <el-option  label="NotBrand" value="0"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="BrandOrNot">
+          <el-select v-model="formData4.parentid" placeholder="select type" @change="searchType">
+            <el-option  label="Not" value="0"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="createBy">
+          <el-input v-model="formData4.createBy"></el-input>
+        </el-form-item>
+        <el-form-item label="createTime">
+          <el-date-picker type="date" v-model="formData4.createTime"></el-date-picker>
+        </el-form-item>
+        <el-form-item label="isVaild">
+          <el-select  v-model="formData4.isvaild"  placeholder="select">
+            <el-option label="vaild" value="1"></el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <span slot="footer" class="dialog-footer">
+        <el-button size="mini" @click="dialogVisible3 = false">cancel</el-button>
+        <el-button type="primary" size="mini" @click="dialogVisible3 = false,addSort()">confirm</el-button>
+  </span>
+    </el-dialog>
+
 
     <!--弹框edit-->
     <el-dialog
@@ -198,18 +228,35 @@
         <el-form-item label="BrandName">
           <el-input v-model="formData.sortName"></el-input>
         </el-form-item>
-        <el-form-item label="Type">
-          <el-input v-model="formData.parentid"></el-input>
+        <el-form-item label="BrandType">
+          <el-select v-model="formData.parentid" placeholder="select type" @change="searchType">
+            <el-option
+                    v-for="item in options"
+                    :key="item.isparent"
+                    :label="item.sortName"
+                    :value="item.isparent"
+            ></el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="BrandNumber">
           <el-input v-model="formData.sortBn"></el-input>
         </el-form-item>
-        <el-form-item label="Picture">
-          <el-input v-model="formData.url"></el-input>
+        <el-form-item label="picture">
+          <el-upload
+                  class="upload-demo"
+                  action="https://jsonplaceholder.typicode.com/posts/"
+                  :on-preview="handlePreview"
+                  :on-remove="handleRemove"
+                  :before-remove="beforeRemove"
+                  multiple
+                  :limit="1"
+                  :on-exceed="handleExceed"
+                  :file-list="fileList">
+            <el-button type="primary">upload</el-button>
+            <div slot="tip" class="el-upload__tip">jpg/png file，and not beyond 500kb</div>
+          </el-upload>
         </el-form-item>
       </el-form>
-
-
       <span slot="footer" class="dialog-footer">
         <el-button size="mini" @click="dialogVisible2 = false">cancel</el-button>
         <el-button type="primary" size="mini" @click="dialogVisible2 = false,Edit()">confirm</el-button>

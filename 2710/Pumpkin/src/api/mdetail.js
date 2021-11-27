@@ -9,6 +9,15 @@ export function selectType() {
 export function searchPage(searchParams) {
     return instance.get("/merchandise/searchPageByCriteria",{params:searchParams});
 }
-export function deleteMerchandise(deleteParams){
-    return instance.put("/merchandise/delete",{params:deleteParams});
+export function deleteMerchandise(entity){
+    return instance.put("/merchandise/delete",entity);
+}
+export function selectBrand() {
+    return instance.get(`/msort/searchPageByCriteria`);
+}
+export function addEntity(entity) {
+    return instance.post(`/merchandise/save`, entity);
+}
+export function update(entity) {
+    return instance.put(`/msort/update`, entity);
 }

@@ -109,13 +109,28 @@
         </el-scrollbar>
 
       </el-aside>
-      <!--右导航-->
+      <!--right direct-->
       <el-container>
-        <!--右导航头-->
+        <!--head-->
         <el-header>
+
           <el-menu  class="el-menu-demo" mode="horizontal" >
-            <el-menu-item index="10"><a href="/Main#/customerInfo" >myInfo</a></el-menu-item>
-        </el-menu></el-header>
+            <el-menu-item>
+              <a >welcome! {{user.nickName}}</a>
+              <el-avatar :src="circleUrl"></el-avatar>
+            </el-menu-item>
+            <el-menu-item>
+              <a href="/Main#/customerInfo" >check your Information</a>
+            </el-menu-item>
+
+            <el-menu-item>
+              <a href="/" @click="signout" >sign out</a>
+            </el-menu-item>
+
+
+          </el-menu>
+
+        </el-header>
         <!--右主题内容-->
         <el-main>
           <!--动态渲染-->
@@ -132,9 +147,8 @@
 </template>
 
 <script>
-export default {
-  name: "index"
-}
+  import main from './index'
+  export default main;
 </script>
 
 <style scoped lang="scss">

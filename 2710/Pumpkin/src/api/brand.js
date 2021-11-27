@@ -6,7 +6,6 @@ export function searchPage(searchParams) {
 export function deleteBrandById(sid){
    return instance.put(`/msort/delete/${sid}`);
 }
-
 export function addEntity(entity) {
    return instance.post(`/msort/save`, entity);
 }

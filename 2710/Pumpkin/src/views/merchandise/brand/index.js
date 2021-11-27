@@ -32,12 +32,23 @@ let brand = {
             },
             formData3:{},//删除
             dialogVisible2: false,
-
+            dialogVisible3: false,
             //upload picture
 
 
             //select type
             options: [],
+
+            //addSort
+            formData4:{
+                isparent:'',
+                parentid:'',
+                sortBn:'',
+                sortName:'',
+                isvaild:'',
+                createBy:'',
+                createTime:'',
+            },
         };
     },
     methods:{
@@ -57,7 +68,7 @@ let brand = {
         async searchType(){
             selectType().then(response => {
                 this.options = response;
-                console.log(this.tableData[0].sid)
+                console.log("options"+this.options);
             });
         },
 
@@ -100,6 +111,12 @@ let brand = {
         },
         async add(){
             await addEntity(this.formData);
+            console.log("999"+this.fileList[0].url);
+            await this.findPage();
+        },
+        async addSort(){
+            this.formData4.isparent=parseInt(Math.random()*100000);
+            await addEntity(this.formData4);
             console.log("999"+this.fileList[0].url);
             await this.findPage();
         },

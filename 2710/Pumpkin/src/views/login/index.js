@@ -45,6 +45,7 @@ let login = {
                 // console.log(res.data.status);
                 this.$router.push({name: 'Main'});
                 localStorage.setItem("token",res.uid);
+                localStorage.setItem("nickName",res.nickName);
                 console.log("99"+localStorage.getItem("token"));
              // const result = res.data;
              // console.log(result+"111")

@@ -1,6 +1,6 @@
 // import {} from '@/api/manager'
 import {getBase64Str} from '@/utils/base64Utils'
-import {findmsort,selectType,searchPage,deleteMerchandise} from '@/api/mdetail'
+import {findmsort,selectType,searchPage,deleteMerchandise,selectBrand,addEntity,update} from '@/api/mdetail'
 
 let mdetail = {
     data() {
@@ -9,6 +9,7 @@ let mdetail = {
             value2: '',
             //table的list
             tableData: [],
+            tableData2:[],
             dialogVisible:false,
             total:0,
             searchParams: {
@@ -18,28 +19,22 @@ let mdetail = {
                 typeid:''//商品类型id
             },
             labelposition: 'left',
-            //修改表单
+
             formData:{},//新增表单信息
             formData2:{
                 mName:'',
                 mSize:'',
                 mColor:'',
+                mPrice:'',
                 mBn:'',
-                brandName:'',
-                sortName:'',
-                mIsvalid:'',
-                sortPicture:'',
-                merichandisePicture:'',
-                parentid:'',
+                mSort:'',
+                mIsvaild:'',
+                url:'',
                 createBy:'',
                 createTime:'',
-                isparent:'',
             },
             //删除
-            formData3:{
-                mName:'',
-                mBn:'',
-            },
+            formData3:{},
             dialogVisible2: false,
 
             //upload picture
@@ -48,6 +43,7 @@ let mdetail = {
             //select type
             value: [],
             options:[],
+            options2:[],
             defaultParams:
                 {
                  value: 'typeid',
@@ -88,13 +84,16 @@ let mdetail = {
         async searchType(){
             selectType().then(response => {
                 this.options=response;
-                console.log(this.tableData)
             });
         },
-
-        clearAndAdd(sid){
+        async searchBrand(){
+            selectBrand().then(response => {
+                this.options2=response.data;
+            });
+        },
+        clearAndAdd(mname,mbn){
             this.tableData.forEach(data=>{
-                if (data.sid === sid) {
+                if (data.mbn === mbn&&data.mname===mname) {
                     this.formData = data;
                 }
             })
@@ -112,14 +111,12 @@ let mdetail = {
             searchPage(this.searchParams).then(response => {
                 this.total = response.total;
                 this.tableData = response.data;
-                console.log(this.tableData)
             });
         },
 
         async deleteMerchandise(){
-            console.log("777"+this.formData3.mName+this.formData3.mBn)
+            console.log("777"+this.formData3.mname+this.formData3.mbn)
             await deleteMerchandise(this.formData3);
-
             await this.findPage();
         },
         async resetForm(){
@@ -127,6 +124,7 @@ let mdetail = {
             this.pickerOptions.startArrayDate ='';
         },
         async add(){
+        console.log("add"+this.formData.mName);
             await addEntity(this.formData);
             await this.findPage();
         },
@@ -142,6 +140,7 @@ let mdetail = {
     created(){
         this.findPage();
         this.searchType();
+        this.searchBrand();
     }
 };
 

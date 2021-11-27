@@ -6,28 +6,16 @@ let customerInfo = {
             //find userInfo
             tableData:[],
 
-            formData: {
-                nickname: '',
-                birthday: '',
-                country: '',
-                city: '',
-                zipcode: '',
-                street: '',
-                state: '',
-                url: '',
-                gender:'',
-                email:'',
-                uid:'',
-            },
+            formData: {},
             dialogVisible: false,
             //头像
         };
     },
             methods: {
                 async onSubmit() {
-                    this.formData.uid=localStorage.getItem("token");
-                    await update(this.formData);
-                    console.log('submit!');
+                    this.formData[0].uid=localStorage.getItem("token");
+                    console.log('submit!'+this.formData);
+                    await update(this.formData[0]);
                 },
                 handleAvatarSuccess(res, file) {
                     this.formData.url = URL.createObjectURL(file.raw);
@@ -45,16 +33,23 @@ let customerInfo = {
                     return isJPG && isLt2M;
                 },
 
+                clearAndAdd(){
+                    search(localStorage.getItem("token")).then(response => {
+                        this.formData= response;
+                    });
+                },
+
+
                 async findPage(){
                     search(localStorage.getItem("token")).then(response => {
                         this.tableData = response;
                         console.log(this.tableData[0].nickName);
-                        console.log("888"+localStorage.getItem("token"))
                     });
                 },
             },
     created(){
         this.findPage();
+        this.clearAndAdd();
     }
 };
 
