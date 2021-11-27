@@ -65,7 +65,6 @@
                         label="brandName"
                         width="180">
                 </el-table-column>
-
                 <el-table-column
                         align="center"
                         prop="mprice"
@@ -102,8 +101,12 @@
                         label="Picture"
                         width="180">
                 </el-table-column>
-
-
+                <el-table-column
+                        align="center"
+                        prop="amount"
+                        label="amount"
+                        width="180">
+                </el-table-column>
                 <el-table-column
                         align="center"
                         prop="address"
@@ -253,6 +256,9 @@
                 <el-form-item label="Size">
                     <el-input v-model="formData.msize"></el-input>
                 </el-form-item>
+                <el-form-item label="amount">
+                    <el-input v-model="formData.amount"></el-input>
+                </el-form-item>
                 <el-form-item label="updateBy">
                     <el-input v-model="formData.updateBy"></el-input>
                 </el-form-item>
@@ -263,6 +269,38 @@
             <span slot="footer" class="dialog-footer">
         <el-button size="mini" @click="dialogVisible2 = false">cancel</el-button>
         <el-button type="primary" size="mini" @click="dialogVisible2 = false,Edit()">confirm</el-button>
+  </span>
+        </el-dialog>
+
+        <!--storageManage-->
+        <el-dialog
+                title="StorageManagement"
+                :visible.sync="dialogVisible3"
+                width="33%"
+        >
+            <el-form ref="form" label-width="110px" size="small" :model="formData" >
+                <el-form-item label="merchandiseName">
+                    <el-input v-model="formData.mname"></el-input>
+                </el-form-item>
+                <el-form-item label="MerchandiseNumber">
+                    <el-input v-model="formData.mbn"></el-input>
+                </el-form-item>
+                <el-form-item label="Color">
+                    <el-input v-model="formData.mcolor"></el-input>
+                </el-form-item>
+                <el-form-item label="Size">
+                    <el-input v-model="formData.msize"></el-input>
+                </el-form-item>
+                <el-form-item label="udateBy">
+                    <el-input v-model="formData.updateBy"></el-input>
+                </el-form-item>
+                <el-form-item label="updateTime">
+                    <el-date-picker type="date" v-model="formData.updateTime"></el-date-picker>
+                </el-form-item>
+            </el-form>
+            <span slot="footer" class="dialog-footer">
+        <el-button size="mini" @click="dialogVisible3 = false">cancel</el-button>
+        <el-button type="primary" size="mini" @click="dialogVisible3 = false,Edit()">confirm</el-button>
   </span>
         </el-dialog>
 

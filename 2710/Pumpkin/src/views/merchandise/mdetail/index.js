@@ -33,9 +33,19 @@ let mdetail = {
                 createBy:'',
                 createTime:'',
             },
+
+            //storage
+            storage:{
+              sid:'',
+              wareName:'',
+              wareColor:'',
+            },
+
             //删除
             formData3:{},
             dialogVisible2: false,
+            dialogVisible3: false,
+            dialogVisible4: false,
 
             //upload picture
 

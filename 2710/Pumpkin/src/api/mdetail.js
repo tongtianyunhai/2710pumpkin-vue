@@ -19,5 +19,5 @@ export function addEntity(entity) {
     return instance.post(`/merchandise/save`, entity);
 }
 export function update(entity) {
-    return instance.put(`/msort/update`, entity);
+    return instance.put(`/merchandise/update`, entity);
 }
