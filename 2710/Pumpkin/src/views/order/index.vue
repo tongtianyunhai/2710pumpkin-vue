@@ -4,8 +4,8 @@
       :data="tableData"
       style="width: 100%">
     <el-table-column
-        prop="merchandiseId"
-        label="merchandiseId"
+        prop="mname"
+        label="mname"
         width="180">
     </el-table-column>
     <el-table-column
