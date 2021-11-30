@@ -1,8 +1,9 @@
 <template>
+
   <div class="main-wrapper">
 
     <!--布局-->
-    <el-container>
+    <el-container style="height: 100%">
       <!--左导航-->
         <el-aside width="200px" >
         <!--Logo部分-->
@@ -20,12 +21,11 @@
               text-color="#606266"
               :router="true"
               default-active="1">
-            <!--main menu-->
-            <el-menu-item index="1">
+            <!--main show-->
+            <el-menu-item index="1" route="/show">
               <i class="el-icon-menu"></i>
               <span slot="title">Main menu</span>
             </el-menu-item>
-
             <!--manager-->
             <el-submenu index="3">
               <template slot="title">
@@ -115,18 +115,27 @@
         <el-header>
 
           <el-menu  class="el-menu-demo" mode="horizontal" >
-            <el-menu-item>
-              <a >welcome! {{user.nickName}}</a>
+            <el-row :gutter="2">
+
+              <el-col :span="7">
+                <el-menu-item>
+              <a style="color: #FF9040">Welcome! {{user.nickName}}</a>
               <el-avatar :src="circleUrl"></el-avatar>
             </el-menu-item>
-            <el-menu-item>
-              <a href="/Main#/customerInfo" >check your Information</a>
-            </el-menu-item>
+              </el-col>
 
+              <el-col :span="7">
+            <el-menu-item>
+              <a href="/#/customerInfo" >check your Information</a>
+            </el-menu-item>
+              </el-col>
+
+              <el-col :span="7">
             <el-menu-item>
               <a href="/" @click="signout" >sign out</a>
             </el-menu-item>
-
+              </el-col>
+            </el-row>
 
           </el-menu>
 
@@ -138,7 +147,6 @@
             <!--展示不同的页面  品牌crud页面 ，分类的crud页面 ，admin crud单页面-->
             <router-view/>
           </div>
-
         </el-main>
       </el-container>
     </el-container>
@@ -214,7 +222,6 @@
 
 }
 
-.el-container {
-  height: 100%;
-}
+
+
 </style>

@@ -1,7 +1,10 @@
 
-
 <template>
-  <div id="myVue"  >
+<div class="front">
+
+  <div class="background">
+    <el-image :src="src" width="100%" height="100%" alt=""></el-image>
+  </div>
     <!--<img src="../../assets/keli.gif" alt="">-->
 
     <el-card class="box-card" >
@@ -75,7 +78,9 @@
     </el-dialog>
 
 
+
   </div>
+
 </template>
 
 <script>
@@ -105,4 +110,19 @@ export default login
   .box
   {width:100%; height:100%; margin:0 auto; border:1px solid #666;
     background:url(../../assets/keli.gif)no-repeat 10px center}
+
+
+  .background {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+  }
+  .front{
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
 </style>

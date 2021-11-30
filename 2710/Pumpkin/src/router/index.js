@@ -12,7 +12,7 @@ import Brand from '../views/merchandise/brand/index.vue'
 import Manager from '../views/manager/index.vue'
 import CustomerInfo from '../views/customer/customerInfo/index.vue'
 import Rank from '../views/rank/index.vue'
-
+import Show from '../views/show/index.vue'
 // imlport Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -41,6 +41,11 @@ const routes = [
     component: Main,
     children: [
   //meichandise gly
+      {
+        path: '/show',
+        name: 'Show',
+        component: Show,
+      },
   {
     path: '/mdetail',
     name: 'Mdetail',

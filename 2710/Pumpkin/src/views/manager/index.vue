@@ -7,7 +7,7 @@
                         <el-input placeholder="ManagerId"  v-model="staff.sid"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button type="primary" @click="findPage">search</el-button>
+                        <el-button type="primary" icon="el-icon-search" @click="findPage">search</el-button>
                         <el-button type="warning" @click="resetForm">reset</el-button>
                         <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible = true,formData={}">Management</el-button>
                         <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible3 = true,formData={}">addNewStaff</el-button>
@@ -242,7 +242,7 @@
                             <el-input placeholder="customerId" v-model="customer.uid"></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-button type="primary" @click="findPage2">search</el-button>
+                            <el-button type="primary" @click="findPage2" icon="el-icon-search">search</el-button>
                             <el-button type="warning" @click="resetForm">reset</el-button>
                         </el-form-item>
                     </el-form>
@@ -306,7 +306,17 @@
                     </el-table>
                 </div>
             </el-dialog>
-
+            <!--分页-->
+            <div class="page-box">
+                <el-pagination
+                        background
+                        :current-page="searchParams.currentPage"
+                        :page-size="searchParams.pageSize"
+                        layout="prev, pager, next"
+                        @current-change="currentPageChange"
+                        :total="total">
+                </el-pagination>
+            </div>
         </div>
 </template>
 

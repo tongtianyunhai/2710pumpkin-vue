@@ -41,9 +41,11 @@ let customerInfo = {
 
 
                 async findPage(){
-                    search(localStorage.getItem("token")).then(response => {
+                    this.formData.uid=localStorage.getItem("token");
+                   await search(this.formData.uid).then(response => {
+                       console.log("uid"+this.formData.uid);
                         this.tableData = response;
-                        console.log(this.tableData[0].nickName);
+                        console.log("0099"+localStorage.getItem("token"));
                     });
                 },
             },

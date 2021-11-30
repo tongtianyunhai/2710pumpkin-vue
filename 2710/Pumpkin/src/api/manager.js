@@ -6,7 +6,7 @@ export function deleteStaffById(sid){
     return instance.delete(`/pstaff/delete/${sid}`);
 }
 export function update(entity) {
-    return instance.put(`/pstaff/updateStaffInfo`, entity);
+    return instance.put(`/pstaff/update`, entity);
 }
 export function addEntity(entity) {
     return instance.post(`/pstaff/save`, entity);

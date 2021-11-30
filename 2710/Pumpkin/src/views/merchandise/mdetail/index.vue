@@ -20,7 +20,7 @@
 
 
                 <el-form-item>
-                    <el-button type="primary" @click="findPage">search</el-button>
+                    <el-button type="primary" @click="findPage" icon="el-icon-search">search</el-button>
                     <el-button type="warning" @click="resetForm">reset</el-button>
                     <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible = true,formData={}">addBrand</el-button>
                 </el-form-item>

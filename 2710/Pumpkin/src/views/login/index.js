@@ -3,11 +3,15 @@ import pickerOptions from '@/utils/date';
 import {getBase64Str} from '@/utils/base64Utils'
 import base64 from '@/utils/getbase64Str2';
 import instance from "../../utils/request";
-import {addEntity} from '@/api/user'
+import {addEntity,searchUid,addCustomerInfo} from '@/api/user'
 let login = {
     data() {
         return {
             //create new account
+            tableData:[],
+            customer:{
+                userid:'',
+            },
             puser: {
                 userName:'',
                 passWord:'',
@@ -26,7 +30,7 @@ let login = {
             },
             //reset password
             dialogVisible2:false,
-
+            src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
         };
     },
     methods: {
@@ -59,8 +63,13 @@ let login = {
          });
         },
         async add(){
-        await addEntity(this.formData);
 
+       await addEntity(this.formData);
+       await  searchUid(this.formData).then(response => {
+                this.tableData = response;
+           this.customer.userid=this.tableData.uid;
+            });
+       await addCustomerInfo(this.customer);
     },
 
     edit(){

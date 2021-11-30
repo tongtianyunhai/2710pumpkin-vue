@@ -127,7 +127,9 @@ let manager = {
             await this.findPage();
         },
         async resetForm(){
-            this.searchParams={currentPage :1, pageSize:3};
+            this.searchParams={currentPage :1, pageSize:5};
+            this.staff.sid='';
+            this.customer.uid='';
         },
         async add(){
             await addEntity(this.formData);
