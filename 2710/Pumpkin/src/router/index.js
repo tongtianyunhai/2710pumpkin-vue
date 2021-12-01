@@ -102,15 +102,21 @@ const routes = [
 const router = new VueRouter({
   routes
 })
-router.beforeEach((to,from,next)=>{
-let token=localStorage.getItem("token");
-if(token||to.path==="/"){
-  next();
-}else{
-  next("/")
-}
-
-})
+// router.beforeEach((to, from, next)=>{
+// if(localStorage.getItem('token')){
+//   if(to.path==='/'){
+//     next({path:'/show'})
+//   }else{
+//    next({path: to.path ||'/show'})
+//   }
+// }else{
+//   if(to.path==='/'){
+//     next()
+//   }else{
+//     next('redirect=${to.path}')
+//   }
+// }
+// })
 
 export default router
 

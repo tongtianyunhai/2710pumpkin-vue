@@ -12,6 +12,10 @@ let login = {
             customer:{
                 userid:'',
             },
+            pstaff: {
+                username:'',
+                password:'',
+            },
             puser: {
                 userName:'',
                 passWord:'',
@@ -41,16 +45,18 @@ let login = {
             //username: "123"
             //发送axios请求,登录成功
             // this.$router.push({name:'Index'});
-            instance.post("/puser/selectUserByName",this.puser).then(res=>{
+       instance.post("/puser/selectUserByName",this.puser).then(res=>{
                 // console.log(res.data);
                 //console.log("返回的结果："+res);
                 console.log(res);
                 console.log(res.passWord)
                 // console.log(res.data.status);
-                this.$router.push({name: 'Main'});
+                this.$router.push({name: 'Show'});
                 localStorage.setItem("token",res.uid);
                 localStorage.setItem("nickName",res.nickName);
+                localStorage.setItem("user",res.roleid)
                 console.log("99"+localStorage.getItem("token"));
+                console.log("user"+localStorage.getItem("user"))
              // const result = res.data;
              // console.log(result+"111")
             // if (result.success){
@@ -61,6 +67,16 @@ let login = {
             //   alert(result.msg);
             // }
          });
+       this.pstaff.password=this.puser.passWord;
+       this.pstaff.username=this.puser.userName;
+         instance.post("/pstaff/selectUserByName",this.pstaff).then(res=>{
+             localStorage.setItem("manager",res.roleId);
+             localStorage.setItem("token",res.sid);
+           this.$router.push({name: 'Show'});
+             console.log("manager"+localStorage.getItem("manager"))
+         });
+
+
         },
         async add(){
 

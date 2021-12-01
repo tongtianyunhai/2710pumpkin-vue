@@ -3,7 +3,8 @@
 <div class="front">
 
   <div class="background">
-    <el-image :src="src" width="100%" height="100%" alt=""></el-image>
+    <el-image :src="src" width="100%" height="100%" alt="">
+    </el-image>
   </div>
     <!--<img src="../../assets/keli.gif" alt="">-->
 
@@ -29,56 +30,51 @@
       </el-form-item>
     </el-form>
     </el-card>
+  <el-dialog
+          title="Create New Account"
+          :visible.sync="dialogVisible"
+          width="40%"
+  >
+    <el-form ref="form" :model="formData" label-width="240px">
+      <el-form-item label="userName" size="small">
+        <el-input v-model="formData.userName"  style="width: 240px;"></el-input>
+      </el-form-item>
 
-    <el-dialog
-            title="Create New Account"
-            :visible.sync="dialogVisible"
-            width="40%"
-    >
-      <el-form ref="form" :model="formData" label-width="240px">
-        <el-form-item label="userName" size="small">
-          <el-input v-model="formData.userName"  style="width: 240px;"></el-input>
-        </el-form-item>
+      <el-form-item label="passWord">
+        <el-input v-model="formData.passWord" size="small" style="width: 240px;"></el-input>
+      </el-form-item>
 
-        <el-form-item label="passWord">
-          <el-input v-model="formData.passWord" size="small" style="width: 240px;"></el-input>
-        </el-form-item>
+      <el-form-item label="nickName">
+        <el-input v-model="formData.nickName" size="small" style="width: 240px;"></el-input>
+      </el-form-item>
 
-        <el-form-item label="nickName">
-          <el-input v-model="formData.nickName" size="small" style="width: 240px;"></el-input>
-        </el-form-item>
+      <el-form-item label="email">
+        <el-input v-model="formData.email" size="small" style="width: 240px;"></el-input>
+      </el-form-item>
 
-        <el-form-item label="email">
-          <el-input v-model="formData.email" size="small" style="width: 240px;"></el-input>
-        </el-form-item>
+      <el-button type="primary" size="mini" @click="dialogVisible = false,add()">confirm</el-button>
+      <el-button size="mini" @click="dialogVisible = false">cancel</el-button>
+    </el-form>
+  </el-dialog>
+  <el-dialog
+          title="Change password"
+          :visible.sync="dialogVisible2"
+          width="40%"
+  >
+    <el-form ref="form" :model="formData" label-width="240px">
+      <el-form-item label="email" size="small">
+        <el-input v-model="formData2.userName"  style="width: 240px;"></el-input>
+        <el-button  @click="dialogVisible2 = true" type="text" >Send checkCode</el-button>
+      </el-form-item>
 
-        <el-button type="primary" size="mini" @click="dialogVisible = false,add()">confirm</el-button>
-        <el-button size="mini" @click="dialogVisible = false">cancel</el-button>
-      </el-form>
-    </el-dialog>
+      <el-form-item label="checkCode">
+        <el-input v-model="formData2.checkCode" size="small" style="width: 240px;"></el-input>
+      </el-form-item>
 
-    <el-dialog
-            title="Create New Account"
-            :visible.sync="dialogVisible2"
-            width="40%"
-    >
-      <el-form ref="form" :model="formData" label-width="240px">
-        <el-form-item label="email" size="small">
-          <el-input v-model="formData2.userName"  style="width: 240px;"></el-input>
-          <el-button  @click="dialogVisible2 = true" type="text" >Send checkCode</el-button>
-        </el-form-item>
-
-        <el-form-item label="checkCode">
-          <el-input v-model="formData2.checkCode" size="small" style="width: 240px;"></el-input>
-        </el-form-item>
-
-        <el-button type="primary" size="mini" @click="dialogVisible2 = false,edit()">confirm</el-button>
-        <el-button size="mini" @click="dialogVisible2 = false">cancel</el-button>
-      </el-form>
-    </el-dialog>
-
-
-
+      <el-button type="primary" size="mini" @click="dialogVisible2 = false,edit()">confirm</el-button>
+      <el-button size="mini" @click="dialogVisible2 = false">cancel</el-button>
+    </el-form>
+  </el-dialog>
   </div>
 
 </template>
