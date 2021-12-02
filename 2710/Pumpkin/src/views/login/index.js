@@ -70,10 +70,10 @@ let login = {
        this.pstaff.password=this.puser.passWord;
        this.pstaff.username=this.puser.userName;
          instance.post("/pstaff/selectUserByName",this.pstaff).then(res=>{
-             localStorage.setItem("manager",res.roleId);
+             localStorage.setItem("user",res.roleId);
              localStorage.setItem("token",res.sid);
            this.$router.push({name: 'Show'});
-             console.log("manager"+localStorage.getItem("manager"))
+             console.log("user"+localStorage.getItem("user"))
          });
 
 

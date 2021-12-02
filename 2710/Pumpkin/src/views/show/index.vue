@@ -11,7 +11,7 @@
         </el-row>
         </el-header>
             <el-main>
-        <el-carousel :interval="5000" arrow="always" height="450px"  >
+        <el-carousel :interval="5000" arrow="always" height="400px"  >
             <el-carousel-item v-for="(img,index) in imgList" :key="index">
                <img :src="img.url"  style="width: 100%; height: 100%" :fit="fill" >
             </el-carousel-item>

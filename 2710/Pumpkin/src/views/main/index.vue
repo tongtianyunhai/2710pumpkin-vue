@@ -14,97 +14,143 @@
         </div>
         <!--导航菜单-->
         <el-scrollbar>
-          <el-menu
-                router
-              active-text-color="#303133"
-                background-color="Transparent"
-              text-color="#606266"
-              :router="true"
-              default-active="1">
-            <!--main show-->
-            <el-menu-item index="1" route="/show">
-              <i class="el-icon-menu"></i>
-              <span slot="title">Main menu</span>
-            </el-menu-item>
-            <!--manager-->
-            <el-submenu index="3">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>Manager</span>
-              </template>
-              <el-menu-item index="3-1" route="/manager">
-                <i class="el-icon-menu"></i>
-                <span slot="title">ManagerInfo</span>
-              </el-menu-item>
+            <!--第一版导航-->
+          <!--<el-menu-->
+                <!--router-->
+              <!--active-text-color="#303133"-->
+                <!--background-color="Transparent"-->
+              <!--text-color="#606266"-->
+              <!--:router="true"-->
+              <!--default-active="1"-->
+                <!--@open="handleOpen"-->
+                <!--@close="handleClose"-->
+               <!--&gt;-->
+            <!--&lt;!&ndash;main show&ndash;&gt;-->
+            <!--<el-menu-item index="1" route="/show">-->
+              <!--<i class="el-icon-menu"></i>-->
+              <!--<span slot="title">Main menu</span>-->
+            <!--</el-menu-item>-->
+            <!--&lt;!&ndash;manager&ndash;&gt;-->
+            <!--<el-submenu index="3">-->
+              <!--<template slot="title">-->
+                <!--<i class="el-icon-location"></i>-->
+                <!--<span>Manager</span>-->
+              <!--</template>-->
+              <!--<el-menu-item index="3-1" route="/manager">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">ManagerInfo</span>-->
+              <!--</el-menu-item>-->
 
-            </el-submenu>
+            <!--</el-submenu>-->
 
-            <!--merchandise-->
-            <el-submenu index="2">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>Merchandise</span>
-              </template>
-              <el-menu-item index="2-2" route="/brand">
-                <i class="el-icon-menu"></i>
-                <span slot="title">Brand</span>
-              </el-menu-item>
-              <el-menu-item index="2-1" route="/mdetail">
-                <i class="el-icon-menu"></i>
-                <span slot="title">Mdetail</span>
-              </el-menu-item>
-            </el-submenu>
-
-
-            <!--shopping-->
-            <el-submenu index="8">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>Shopping</span>
-              </template>
-              <el-menu-item index="2-1" route="/shoppingInfo">
-                <i class="el-icon-menu"></i>
-                <span slot="title">ShoppingInfo</span>
-              </el-menu-item>
-              <el-menu-item index="2-1" route="/merchandisePage">
-                <i class="el-icon-menu"></i>
-                <span slot="title">MerchandisePage</span>
-              </el-menu-item>
-              <el-menu-item index="2-1" route="/shoppingCart">
-                <i class="el-icon-menu"></i>
-                <span slot="title">ShoppingCart</span>
-              </el-menu-item>
-            </el-submenu>
+            <!--&lt;!&ndash;merchandise&ndash;&gt;-->
+            <!--<el-submenu index="2">-->
+              <!--<template slot="title">-->
+                <!--<i class="el-icon-location"></i>-->
+                <!--<span>Merchandise</span>-->
+              <!--</template>-->
+              <!--<el-menu-item index="2-2" route="/brand">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">Brand</span>-->
+              <!--</el-menu-item>-->
+              <!--<el-menu-item index="2-1" route="/mdetail">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">Mdetail</span>-->
+              <!--</el-menu-item>-->
+            <!--</el-submenu>-->
 
 
+            <!--&lt;!&ndash;shopping&ndash;&gt;-->
+            <!--<el-submenu index="4">-->
+              <!--<template slot="title">-->
+                <!--<i class="el-icon-location"></i>-->
+                <!--<span>Shopping</span>-->
+              <!--</template>-->
+              <!--<el-menu-item index="4-1" route="/shoppingInfo">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">ShoppingInfo</span>-->
+              <!--</el-menu-item>-->
+              <!--<el-menu-item index="4-2" route="/merchandisePage">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">MerchandisePage</span>-->
+              <!--</el-menu-item>-->
+              <!--<el-menu-item index="4-3" route="/shoppingCart">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">ShoppingCart</span>-->
+              <!--</el-menu-item>-->
+            <!--</el-submenu>-->
 
 
-            <!-- order-->
-            <el-submenu index="5">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>Order</span>
-              </template>
-              <el-menu-item index="5-1" route="/order">
-                <i class="el-icon-menu"></i>
-                <span slot="title">OrderInfo</span>
-              </el-menu-item>
-            </el-submenu>
 
 
-            <!-- rank-->
-            <el-submenu index="4">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>Rank</span>
-              </template>
-              <el-menu-item index="4-1" route="/rank">
-                <i class="el-icon-menu"></i>
-                <span slot="title">RankInfo</span>
-              </el-menu-item>
+            <!--&lt;!&ndash; order&ndash;&gt;-->
+            <!--<el-submenu index="5">-->
+              <!--<template slot="title">-->
+                <!--<i class="el-icon-location"></i>-->
+                <!--<span>Order</span>-->
+              <!--</template>-->
+              <!--<el-menu-item index="5-1" route="/order">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">OrderInfo</span>-->
+              <!--</el-menu-item>-->
+            <!--</el-submenu>-->
 
 
-            </el-submenu>
+            <!--&lt;!&ndash; rank&ndash;&gt;-->
+            <!--<el-submenu index="6">-->
+              <!--<template slot="title">-->
+                <!--<i class="el-icon-location"></i>-->
+                <!--<span>Rank</span>-->
+              <!--</template>-->
+              <!--<el-menu-item index="6-1" route="/rank">-->
+                <!--<i class="el-icon-menu"></i>-->
+                <!--<span slot="title">RankInfo</span>-->
+              <!--</el-menu-item>-->
+
+
+            <!--</el-submenu>-->
+          <!--</el-menu>-->
+
+            <el-menu
+                    @select="selectMenu"
+                    :default-active="currentIndexLight"
+                    class="el-menu-vertical-demo"
+                    @open="handleOpen"
+                    @close="handleClose"
+                    background-color="#545c64"
+                    text-color="#fff"
+                    :router="startRouter"
+                    active-text-color="#ffd04b"
+            >
+                    <div v-for="item in menuList3" :key="item.path">
+                        <!-- 没有子菜单 -->
+                        <template v-if="item.children && item.children.length == 0">
+                            <el-menu-item :index="item.path">
+                                <i class="el-icon-menu"></i>
+                                {{item.name}}
+                            </el-menu-item>
+                        </template>
+                        <!-- 有子菜单 -->
+                        <el-submenu v-else :index="item.path">
+                            <template slot="title">
+                                <i class="el-icon-menu"></i>
+                                {{item.name}}
+                            </template>
+
+                            <template v-for="child in item.children">
+                                <!-- 这里是类似递归循环 -->
+                                <sidebar-item
+                                        v-if="child.children&&child.children.length>0"
+                                        :item="child"
+                                        :key="child.path"
+                                />
+                                <el-menu-item v-else :key="child.path" :index="child.path">
+                                    <i class="el-icon-location"></i>
+                                    {{child.name}}
+                                </el-menu-item>
+                            </template>
+                        </el-submenu>
+                    </div>
           </el-menu>
         </el-scrollbar>
 
