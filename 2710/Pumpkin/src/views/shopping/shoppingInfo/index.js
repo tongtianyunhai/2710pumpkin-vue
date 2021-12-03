@@ -99,18 +99,11 @@ let merchandise = {
             console.log("======saveinfo=======")
             localStorage.setItem("mname",item.mname);
             localStorage.setItem("mbn",item.mbn);
-
-            // this.$router.push({
-            //     path: '/merchandisePage',
-            //     name: 'MerchandisePage',
-            //     params: {
-            //         name: 'MerchandisePage',
-            //         dataObj: item
-            //     }
-            // })
+            console.log("======savefinish=======")
         },
 
         clearAndAdd(mname,mbn){
+            console.log("show dialog:"+mname+" ,"+"mbn")
             this.tableData.forEach(data=>{
                 if (data.mname === mname&&data.mbn===mbn) {
                     this.formData = data;

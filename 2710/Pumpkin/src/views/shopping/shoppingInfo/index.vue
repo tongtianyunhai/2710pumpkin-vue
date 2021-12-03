@@ -22,9 +22,6 @@
           <el-form-item>
             <el-button type="primary" @click="findPage" icon="el-icon-search">search</el-button>
             <el-button type="warning" @click="resetForm">reset</el-button>
-            <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible = true,formData={}">
-              addBrand
-            </el-button>
           </el-form-item>
         </el-form>
 
@@ -35,16 +32,18 @@
 
         <el-col :span="6" v-for="item in tableData">
 <!--          <a href="#/merchandisePage?mname={{item.mname}}&mbn={{item.mbn}}"></a>-->
-          <a href="#/merchandisePage" @click="saveInfo(item)">
+
 <!--            <router-link :to="{ path: '/merchandisePage',params: {name: 'name',dataObj: data},query: {name: 'name',dataObj: data}}">-->
 
             <div class="grid-content bg-purple">
               <!--     card       -->
               <!--            <el-card :body-style="{ padding: '24px' }">-->
-
+              <a href="#/merchandisePage" @click="saveInfo(item)">
               <div style="width: 190px;height: 300px; border: solid">
-                <img src="" class="image" alt="item.merichandisePicture"></div>
+                <img src="" class="image" alt="item.merichandisePicture">
 
+              </div>
+              </a>
               <div style="padding: 14px;">
                 <span style="color: red; font-size: 25px">{{ item.mprice }}$</span>
                 <div class="bottom clearfix">
@@ -58,7 +57,7 @@
               <!--            -->
             </div>
 <!--            </router-link>-->
-          </a>
+
         </el-col>
 
         <!--弹框edit-->
