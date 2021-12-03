@@ -54,7 +54,7 @@ let login = {
                 this.$router.push({name: 'Show'});
                 localStorage.setItem("token",res.uid);
                 localStorage.setItem("nickName",res.nickName);
-                localStorage.setItem("user",res.roleid)
+                localStorage.setItem("user",res.roleid);
                 console.log("99"+localStorage.getItem("token"));
                 console.log("user"+localStorage.getItem("user"))
              // const result = res.data;

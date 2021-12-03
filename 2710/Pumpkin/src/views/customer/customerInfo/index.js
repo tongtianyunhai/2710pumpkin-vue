@@ -9,16 +9,20 @@ let customerInfo = {
             formData: {},
             dialogVisible: false,
             //头像
+            dialogVisible5: false,
         };
     },
             methods: {
                 async onSubmit() {
                     this.formData[0].uid=localStorage.getItem("token");
                     console.log('submit!'+this.formData);
+                    this.formData[0].url='';
                     await update(this.formData[0]);
+                    console.log("test1"+this.formData[0].url)
                 },
                 handleAvatarSuccess(res, file) {
-                    this.formData.url = URL.createObjectURL(file.raw);
+                    this.formData[0].url = URL.createObjectURL(file.raw);
+                    console.log("picture"+this.formData[0].url);
                 },
                 beforeAvatarUpload(file) {
                     const isJPG = file.type === 'image/jpeg';
@@ -45,6 +49,8 @@ let customerInfo = {
                    await search(this.formData.uid).then(response => {
                        console.log("uid"+this.formData.uid);
                         this.tableData = response;
+                       localStorage.setItem("picture",res.url);
+                       console.log("picture"+localStorage.getItem("picture",res.url));
                         console.log("0099"+localStorage.getItem("token"));
                     });
                 },

@@ -47,15 +47,6 @@
                 <el-input v-model="formData[0].street"></el-input>
             </el-form-item>
             <el-form-item label="Picture">
-            <el-upload
-                    class="avatar-uploader"
-                    action="https://jsonplaceholder.typicode.com/posts/"
-                    :show-file-list="false"
-                    :on-success="handleAvatarSuccess"
-                    :before-upload="beforeAvatarUpload">
-                <img v-if="formData[0].url" :src="formData[0].url" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
             </el-form-item>
 
             <el-form-item>
@@ -65,6 +56,26 @@
         </el-form>
         </el-container>
         </el-dialog>
+
+
+    <!--Avatar-->
+        <el-dialog
+                title="modify your information"
+                :visible.sync="dialogVisible5"
+                width="33%"
+        >
+        <el-upload
+                class="avatar-uploader"
+                action="http://localhost:9000/pcustomer/upload"
+                :show-file-list="false"
+                :on-success="handleAvatarSuccess"
+                :data="{'uid':formData[0].uid}"
+                :before-upload="beforeAvatarUpload">
+            <img v-if="formData[0].url" :src="formData[0].url" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+        </el-dialog>
+
 
         <el-descriptions title="MyInfo" direction="vertical" :column="4" border :data="tableData" >
             <el-descriptions-item label="userName">{{tableData[0].uid}}</el-descriptions-item>
@@ -83,7 +94,7 @@
         </el-descriptions>
         <el-button type="success" icon="el-icon-edit" size="mini"
                    @click="dialogVisible=true,clearAndAdd()">modify</el-button>
-
+        <el-button type="success" icon="el-icon-edit" size="mini" round  @click="dialogVisible5=true">uploadAvatar</el-button>
     </div>
 </template>
 

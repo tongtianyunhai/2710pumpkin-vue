@@ -1,7 +1,6 @@
 <template>
 
   <div class="main-wrapper">
-
     <!--布局-->
     <el-container style="height: 100%">
       <!--左导航-->
@@ -158,15 +157,14 @@
       <!--right direct-->
       <el-container>
         <!--head-->
-        <el-header>
-
+        <el-header >
           <el-menu  class="el-menu-demo" mode="horizontal" >
             <el-row :gutter="2">
 
               <el-col :span="7">
                 <el-menu-item>
               <a style="color: #FF9040">Welcome! {{user.nickName}}</a>
-              <el-avatar :src="circleUrl"></el-avatar>
+              <el-avatar :src="require('../../assets/549a5311bec6c.jpg')"></el-avatar>
             </el-menu-item>
               </el-col>
 
