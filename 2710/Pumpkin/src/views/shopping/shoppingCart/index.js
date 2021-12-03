@@ -1,9 +1,12 @@
-import {searchPage} from "@/api/cart";
+import {searchPage,deleteEntity} from "@/api/cart";
+import {addEntity} from "@/api/order";
+import {findSale} from"@/api/merchandise"
 import order from "@/views/order";
 
 let cart = {
     data() {
         return {
+            currentPrice:'',
             tableData: [],
             searchParams: {
                 currentPage: 1,//当前页
@@ -12,6 +15,11 @@ let cart = {
             },
             rowData:{},
             dialogVisible2: false,
+            salesinfo:{},
+            paramData:{
+                mName:'',
+                mBn:'',
+            },
         }
     },
 
@@ -34,23 +42,32 @@ let cart = {
             this.searchParams.currentPage = currentPage;
             await this.findPage();
         },
-        placeOrder(sid){
+        placeOrder(mbn,mname){
             this.tableData.forEach(data=>{
-                if (data.sid === sid) {
+                if (data.mbn === mbn&&data.mname===mname) {
                     this.rowData = data;
                 }
             })
-            console.log(sid+"====");
-            console.log(this.rowData);////////////////////////bug/////////////////////////////
+            this.rowData.shipping="10";
+            console.log(mbn+"===="+mname);
+            console.log(this.rowData);
+
+
         },
-        removefromcart(sid){
+        checkout(){
+            addEntity(this.rowData);
+            deleteEntity(this.rowData);
+            this.findPage();
+        },
+
+        removefromcart(mbn,mname){
             this.tableData.forEach(data=>{
-                if (data.sid === sid) {
+                if (data.mbn === mbn&&data.mname===mname) {
                     this.rowData = data;
                 }
             })
-            console.log(sid+"====");
-            console.log(this.rowData);////////////////////////bug/////////////////////////////
+            deleteEntity(this.rowData);
+            this.findPage();
         }
 
     },

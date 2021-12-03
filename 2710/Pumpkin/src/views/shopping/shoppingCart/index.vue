@@ -44,18 +44,18 @@
         <template v-slot="obj">
 
           <el-button type="success" icon="el-icon-edit" size="mini"
-                     @click="placeOrder(obj.row.sid),dialogVisible2=true">Check out
+                     @click="placeOrder(obj.row.mbn,obj.row.mname),dialogVisible2=true">Check out
           </el-button>
           <el-popconfirm
               confirm-button-text='Confirm'
               cancel-button-text='Cancel'
-              @confirm="removefromcart"
+              @confirm="removefromcart(obj.row.mbn,obj.row.mname)"
               icon="el-icon-info"
               icon-color="red"
               title="are you sure to delete？"
           >
             <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini"
-                       @click="formData3.sid=obj.row.sid">Delete
+                       >Delete
             </el-button>
           </el-popconfirm>
         </template>
@@ -74,18 +74,21 @@
         <el-form-item label="TYPE">
           <el-input v-model="rowData.mbn" disabled=""></el-input>
         </el-form-item>
-        <el-form-item label="CATEGORY">
-          <el-input v-model="rowData.sortName" disabled=""></el-input>
+        <el-form-item label="shipping">
+          <el-input v-model="rowData.shipping" disabled=""></el-input>
         </el-form-item>
         <el-form-item label="QUANTITY">
           <el-input v-model="rowData.quantity"></el-input>
+        </el-form-item>
+        <el-form-item label="Remark">
+          <el-input v-model="rowData.remark"></el-input>
         </el-form-item>
       </el-form>
 
 
       <span slot="footer" class="dialog-footer">
         <el-button size="mini" @click="dialogVisible2 = false">cancel</el-button>
-        <el-button type="primary" size="mini" @click="dialogVisible2 = false,add()">confirm</el-button>
+        <el-button type="primary" size="mini" @click="dialogVisible2 = false,checkout()">confirm</el-button>
   </span>
     </el-dialog>
     <div class="page-box">
