@@ -109,11 +109,6 @@ let main = {
                             children:[],
                         },
                         {
-                            path: '/merchandisePage',
-                            name: 'MerchandisePage',
-                            children:[],
-                        },
-                        {
                             path: '/shoppingCart',
                             name: 'ShoppingCart',
                             children:[],
