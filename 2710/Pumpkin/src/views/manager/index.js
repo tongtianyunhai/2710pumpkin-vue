@@ -96,11 +96,7 @@ let manager = {
                 if (data.uid === uid) {
                     this.formData3 = data;
                     this.formData2.uid=this.formData3.uid;
-                    this.formData2.userName=this.formData3.userName;
-                    this.formData2.passWord=this.formData3.passWord;
-                    this.formData2.nickName=this.formData3.nickName;
-                    this.formData2.isvaild=this.formData3.isvaild;
-                    this.formData2.star=this.formData3.star;
+
                 }
             })
         },
@@ -136,7 +132,7 @@ let manager = {
             console.log("999"+this.fileList[0].url);
             await this.findPage();
         },
-        async addSort(){
+        async addStaff(){
             await addEntity(this.formData4);
             await this.findPage();
         },
@@ -145,6 +141,7 @@ let manager = {
             await update(this.formData);
             await this.findPage();
         },
+        //edit userInformation
         async Edit2(){
             await updateCustomer(this.formData2);
             console.log(this.formData2.uid);

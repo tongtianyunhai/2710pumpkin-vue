@@ -3,7 +3,7 @@
 <div class="front">
 
   <div class="background">
-    <el-image :src="src" width="100%" height="100%" alt="">
+    <el-image :src="require('../../assets/549a5311bec6c.jpg')"  alt="">
     </el-image>
   </div>
     <!--<img src="../../assets/keli.gif" alt="">-->
@@ -14,7 +14,7 @@
       </div>
     <el-form ref="user" :model="user">
       <el-form-item label="Account">
-        <el-input v-model="puser.userName" placeholder="userName" suffix-icon="el-icon-user"></el-input>
+        <el-input v-model="puser.uid" placeholder="userName" suffix-icon="el-icon-user"></el-input>
       </el-form-item>
       <el-form-item label="Password">
         <el-button style="float: right;" @click="dialogVisible2 = true" type="text" >ForgotPassWord?</el-button>
@@ -37,7 +37,7 @@
   >
     <el-form ref="form" :model="formData" label-width="240px">
       <el-form-item label="userName" size="small">
-        <el-input v-model="formData.userName"  style="width: 240px;"></el-input>
+        <el-input v-model="formData.uid"  style="width: 240px;"></el-input>
       </el-form-item>
 
       <el-form-item label="passWord">

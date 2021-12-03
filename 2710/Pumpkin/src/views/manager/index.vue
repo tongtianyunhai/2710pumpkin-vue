@@ -116,11 +116,8 @@
                     <el-form-item >
                         <el-button type="primary" icon="el-icon-edit" size="mini"  @click="dialogVisible4=true,findPage2()">checkCustomerInfo</el-button>
                     </el-form-item>
-                    <el-form-item label="userId">
-                        <el-input v-model="formData2.uid" disabled=""></el-input>
-                    </el-form-item>
                     <el-form-item label="userName">
-                        <el-input v-model="formData2.userName" disabled=""></el-input>
+                        <el-input v-model="formData2.uid" disabled=""></el-input>
                     </el-form-item>
                     <el-form-item label="passWord">
                         <el-input v-model="formData2.passWord" ></el-input>
@@ -157,6 +154,12 @@
                     <el-form-item label="StaffName">
                         <el-input v-model="formData4.name"></el-input>
                     </el-form-item>
+                    <el-form-item label="account">
+                        <el-input v-model="formData4.sid"></el-input>
+                    </el-form-item>
+                    <el-form-item label="passWord">
+                        <el-input v-model="formData4.password"></el-input>
+                    </el-form-item>
                     <el-form-item label="Department">
                         <el-input v-model="formData4.department"></el-input>
                     </el-form-item>
@@ -187,7 +190,7 @@
                 </el-form>
                 <span slot="footer" class="dialog-footer">
         <el-button size="mini" @click="dialogVisible3 = false">cancel</el-button>
-        <el-button type="primary" size="mini" @click="dialogVisible3 = false,addSort()">confirm</el-button>
+        <el-button type="primary" size="mini" @click="dialogVisible3 = false,addStaff()">confirm</el-button>
   </span>
             </el-dialog>
 
@@ -234,7 +237,7 @@
             <el-dialog
                     title="CustomerInfo"
                     :visible.sync="dialogVisible4"
-                    width="80%"
+                    width="100%"
             >
                 <div class="search-box">
                     <el-form :inline="true" class="demo-form-inline" size="mini">
@@ -260,13 +263,7 @@
                         <el-table-column
                                 align="center"
                                 prop="uid"
-                                label="userId"
-                                width="180">
-                        </el-table-column>
-                        <el-table-column
-                                align="center"
-                                prop="userName"
-                                label="customerName"
+                                label="userName"
                                 width="180">
                         </el-table-column>
                         <el-table-column
@@ -298,9 +295,9 @@
                         <el-table-column
                                 align="center"
                                 prop="address"
-                                label="操作">
+                                label="operation">
                             <template v-slot="obj">
-                                <el-button type="success" icon="el-icon-edit" size="mini" @click="clearAndAdd2(obj.row.uid),dialogVisible4=false">选择该条记录</el-button>
+                                <el-button type="success" icon="el-icon-edit" size="mini" @click="clearAndAdd2(obj.row.uid),dialogVisible4=false">select this record</el-button>
                             </template>
                         </el-table-column>
                     </el-table>

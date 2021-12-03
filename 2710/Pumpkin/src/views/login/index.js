@@ -13,28 +13,28 @@ let login = {
                 userid:'',
             },
             pstaff: {
-                username:'',
+                sid:'',
                 password:'',
             },
             puser: {
-                userName:'',
+                uid:'',
                 passWord:'',
             },
             dialogVisible:false,
 
         formData:{
-                userName:'',
+                uid:'',
                 passWord:'',
                 nickName:'',
                 email:'',
         },
             formData2:{
-                userName:'',
+                uid:'',
                 checkCode:'',
             },
             //reset password
             dialogVisible2:false,
-            src: 'https://cube.elemecdn.com/6/94/4d3ea53c084bad6931a56d5158a48jpeg.jpeg'
+            // src: '../login/image/test.jpg'
         };
     },
     methods: {
@@ -68,9 +68,10 @@ let login = {
             // }
          });
        this.pstaff.password=this.puser.passWord;
-       this.pstaff.username=this.puser.userName;
+       this.pstaff.sid=this.puser.uid;
          instance.post("/pstaff/selectUserByName",this.pstaff).then(res=>{
              localStorage.setItem("user",res.roleId);
+             localStorage.setItem("nickName",res.name);
              localStorage.setItem("token",res.sid);
            this.$router.push({name: 'Show'});
              console.log("user"+localStorage.getItem("user"))

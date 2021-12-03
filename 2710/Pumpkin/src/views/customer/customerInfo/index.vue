@@ -11,6 +11,9 @@
             <el-form-item label="nickName">
                 <el-input v-model="formData[0].nickName"></el-input>
             </el-form-item>
+            <el-form-item label="passWord">
+                <el-input v-model="formData[0].passWord"></el-input>
+            </el-form-item>
             <el-form-item label="email">
                 <el-input v-model="formData[0].email"></el-input>
             </el-form-item>
@@ -64,7 +67,7 @@
         </el-dialog>
 
         <el-descriptions title="MyInfo" direction="vertical" :column="4" border :data="tableData" >
-            <el-descriptions-item label="userName">{{tableData[0].userName}}</el-descriptions-item>
+            <el-descriptions-item label="userName">{{tableData[0].uid}}</el-descriptions-item>
             <el-descriptions-item label="nickName">{{tableData[0].nickName}}</el-descriptions-item>
             <el-descriptions-item label="gender">{{tableData[0].gender}}</el-descriptions-item>
             <el-descriptions-item label="picture">{{tableData[0].url}}</el-descriptions-item>
