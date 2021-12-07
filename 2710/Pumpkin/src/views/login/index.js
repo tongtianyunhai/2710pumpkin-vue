@@ -55,8 +55,9 @@ let login = {
                 localStorage.setItem("token",res.uid);
                 localStorage.setItem("nickName",res.nickName);
                 localStorage.setItem("user",res.roleid);
-                console.log("99"+localStorage.getItem("token"));
-                console.log("user"+localStorage.getItem("user"))
+                localStorage.setItem("uid",res.uid);
+                console.log("uid"+localStorage.getItem("uid"));
+                console.log("user"+localStorage.getItem("user"));
              // const result = res.data;
              // console.log(result+"111")
             // if (result.success){
@@ -67,6 +68,7 @@ let login = {
             //   alert(result.msg);
             // }
          });
+
        this.pstaff.password=this.puser.passWord;
        this.pstaff.sid=this.puser.uid;
          instance.post("/pstaff/selectUserByName",this.pstaff).then(res=>{
@@ -76,8 +78,6 @@ let login = {
            this.$router.push({name: 'Show'});
              console.log("user"+localStorage.getItem("user"))
          });
-
-
         },
         async add(){
 

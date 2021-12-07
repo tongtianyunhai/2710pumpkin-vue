@@ -96,7 +96,9 @@ let manager = {
                 if (data.uid === uid) {
                     this.formData3 = data;
                     this.formData2.uid=this.formData3.uid;
-
+                    this.formData2.passWord=this.formData3.passWord;
+                    this.formData2.nickName=this.formData3.nickName;
+                    this.formData2.star=this.formData3.star;
                 }
             })
         },
@@ -143,8 +145,10 @@ let manager = {
         },
         //edit userInformation
         async Edit2(){
-            await updateCustomer(this.formData2);
+            console.log("vaild"+this.formData2.isvaild);
             console.log(this.formData2.uid);
+            console.log(this.formData2);
+            await updateCustomer(this.formData2);
         }
     },
     created(){

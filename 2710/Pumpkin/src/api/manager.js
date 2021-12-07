@@ -13,7 +13,7 @@ export function addEntity(entity) {
 }
 
 export function updateCustomer(entity) {
-    return instance.put(`/pcustomer/update`, entity);
+    return instance.put(`/puser/updateUserValid`, entity);
 }
 
 export function searchCustomer(uid) {

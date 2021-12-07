@@ -57,7 +57,7 @@
         </el-table-column>
         <el-table-column
             align="center"
-            prop="pictureAddress"
+            prop="url"
             label="Picture"
             width="180">
         </el-table-column>

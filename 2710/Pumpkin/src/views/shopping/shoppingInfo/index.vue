@@ -39,9 +39,8 @@
               <!--     card       -->
               <!--            <el-card :body-style="{ padding: '24px' }">-->
               <a href="#/merchandisePage" @click="saveInfo(item)">
-              <div style="width: 190px;height: 300px; border: solid">
-                <img src="" class="image" alt="item.merichandisePicture">
-
+              <div style="width: 190px;height: 300px;">
+                <img :src="require(`E:/2710vue/2710/Pumpkin/src/assets/MerchandiseImages/${item.merchandisePicture}`)"width="200" height="200" class="head_pic"/>
               </div>
               </a>
               <div style="padding: 14px;">

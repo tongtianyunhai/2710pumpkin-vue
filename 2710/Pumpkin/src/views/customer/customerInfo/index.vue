@@ -69,9 +69,9 @@
                 action="http://localhost:9000/pcustomer/upload"
                 :show-file-list="false"
                 :on-success="handleAvatarSuccess"
-                :data="{'uid':formData[0].uid}"
+                :data="{'uid':formData2.uid}"
                 :before-upload="beforeAvatarUpload">
-            <img v-if="formData[0].url" :src="formData[0].url" class="avatar">
+            <img v-if="formData2.url" :src="formData2.url" class="avatar">
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
         </el-upload>
         </el-dialog>

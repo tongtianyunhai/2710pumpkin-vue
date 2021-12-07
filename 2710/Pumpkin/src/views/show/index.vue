@@ -21,6 +21,21 @@
             <el-row><el-col :span="24" style="color:#606266 ;font-family: 'Arial Narrow'; font-weight: 900"><h>Pumpkin online shopping system </h></el-col></el-row>
             <el-row><el-col :span="24" style="color:#606266 ;font-family: 'Arial Narrow'; font-weight: 900"><h>Since November 11,2021</h></el-col></el-row>
             <el-row><el-col :span="24" style="color:#606266 ;font-family: 'Arial Narrow'; font-weight: 900"><h>contact us</h></el-col></el-row>
+            <el-row><el-col :span="6" style="color:#606266 ;font-family: 'Arial Narrow'; font-weight: 900"><h>contact us</h></el-col></el-row>
+
+            <el-row>
+                <el-link
+                        class="el-icon-phone-outline"
+                        href="https://www.facebook.com/" target="_blank">
+                </el-link>
+                <el-link  class="el-icon-phone-outline"
+                          href="https://twitter.com/" target="_blank">
+                </el-link>
+                <el-link  class="el-icon-phone-outline"
+                          href="https://www.youtube.com/" target="_blank">
+                </el-link>
+            </el-row>
+
         </el-footer>
     </el-container>
 </template>

@@ -120,16 +120,16 @@
                         <el-input v-model="formData2.uid" disabled=""></el-input>
                     </el-form-item>
                     <el-form-item label="passWord">
-                        <el-input v-model="formData2.passWord" ></el-input>
+                        <el-input v-model="formData2.passWord" disabled=""></el-input>
                     </el-form-item>
                     <el-form-item label="nickName">
-                        <el-input v-model="formData2.nickName"></el-input>
+                        <el-input v-model="formData2.nickName"disabled=""></el-input>
                     </el-form-item>
                     <el-form-item label="isvaild">
                         <el-input v-model="formData2.isvaild"></el-input>
                     </el-form-item>
                     <el-form-item label="star">
-                        <el-input v-model="formData2.star"></el-input>
+                        <el-input v-model="formData2.star"disabled=""></el-input>
                     </el-form-item>
                     <el-form-item label="updateBy">
                         <el-input v-model="formData2.updateBy"></el-input>

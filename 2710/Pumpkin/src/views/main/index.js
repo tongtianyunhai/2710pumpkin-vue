@@ -1,4 +1,7 @@
 import {router} from '@/router/index'
+import instance from "../../utils/request";
+import {searchCustomer} from '@/api/main'
+
 let main = {
     data() {
         return {
@@ -6,10 +9,12 @@ let main = {
             user:{
                 uid:'',
                 nickName:'',
+                url:'img_2021_12_04173717446.jpg',
             },
             startRouter: true,//开启路由标识， ，启用该模式会在激活导航时以 index 作为 path 进行路由跳转
             currentIndexLight: '',//当前激活菜单的 index  高亮显示
             arrIndex: [],
+
             //manager
             menuList:[
                 {
@@ -135,6 +140,15 @@ let main = {
 
     methods:{
         userShow(){
+            searchCustomer(localStorage.getItem("uid")).then(response => {
+                    this.tableData = response;
+                    console.log("789"+this.tableData[0].url);
+                    this.user.url=this.tableData[0].url;
+                });
+            //     this.tableData = response;
+            //     this.user.url=this.tableData.url;
+            //     console.log("avatar"+this.user.url);
+
             this.user.nickName=localStorage.getItem("nickName");
         },
         signout(){

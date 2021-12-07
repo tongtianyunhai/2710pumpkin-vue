@@ -22,7 +22,7 @@
                 <el-form-item>
                     <el-button type="primary" @click="findPage" icon="el-icon-search">search</el-button>
                     <el-button type="warning" @click="resetForm">reset</el-button>
-                    <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible = true,formData={}">addBrand</el-button>
+                    <el-button type="primary" icon="el-icon-edit" size="mini" @click="dialogVisible = true,formData={}">addMerchandise</el-button>
                 </el-form-item>
 
 
@@ -91,15 +91,20 @@
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="sortPicture"
-                        label="BrandPicture"
+                        label="sortPicture"
                         width="180">
+                    <template slot-scope="scope">
+                        　　　　<img :src="require(`E:/2710vue/2710/Pumpkin/src/assets/${scope.row.sortPicture}`)" width="40" height="40" class="head_pic"/>
+                    </template>
                 </el-table-column>
                 <el-table-column
                         align="center"
-                        prop="merichandisePicture"
                         label="Picture"
+                        prop="merchandisePicture"
                         width="180">
+                    <template slot-scope="scope">
+                        　　　　<img :src="require(`E:/2710vue/2710/Pumpkin/src/assets/${scope.row.merchandisePicture}`)"  width="40" height="40" class="head_pic"/>
+                    </template>
                 </el-table-column>
                 <el-table-column
                         align="center"
@@ -123,8 +128,11 @@
                                 title="are you sure to delete？"
                         >
                             <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini"
-                                       @click="formData3.mname=obj.row.mname,formData3.mbn=obj.row.mbn"></el-button>
+                                       @click="formData3.mname=obj.row.mname,formData3.mbn=obj.row.mbn">
+                            </el-button>
                         </el-popconfirm>
+
+
                     </template>
 
 
@@ -154,21 +162,21 @@
                 <el-form-item label="merchandiseName">
                     <el-input v-model="formData.mname"></el-input>
                 </el-form-item>
-                <el-form-item label="picture">
-                    <el-upload
-                            class="upload-demo"
-                            action="https://jsonplaceholder.typicode.com/posts/"
-                            :on-preview="handlePreview"
-                            :on-remove="handleRemove"
-                            :before-remove="beforeRemove"
-                            multiple
-                            :limit="1"
-                            :on-exceed="handleExceed"
-                            :file-list="formData.url">
-                        <el-button type="primary">upload</el-button>
-                        <div slot="tip" class="el-upload__tip">jpg/png file，and not beyond 500kb</div>
-                    </el-upload>
-                </el-form-item>
+                <!--<el-form-item label="picture">-->
+                    <!--<el-upload-->
+                            <!--class="upload-demo"-->
+                            <!--action="#"-->
+                            <!--:on-preview="handlePreview"-->
+                            <!--:on-remove="handleRemove"-->
+                            <!--:before-remove="beforeRemove"-->
+                            <!--multiple-->
+                            <!--:limit="1"-->
+                            <!--:on-exceed="handleExceed"-->
+                            <!--:file-list="formData.url">-->
+                        <!--<el-button type="primary">upload</el-button>-->
+                        <!--<div slot="tip" class="el-upload__tip">jpg/png file，and not beyond 500kb</div>-->
+                    <!--</el-upload>-->
+                <!--</el-form-item>-->
                 <el-form-item label="MerchandiseNumber">
                     <el-input v-model="formData.mbn"></el-input>
                 </el-form-item>
@@ -219,21 +227,21 @@
                 <el-form-item label="merchandiseName">
                     <el-input v-model="formData.mname"></el-input>
                 </el-form-item>
-                <el-form-item label="picture">
-                    <el-upload
-                            class="upload-demo"
-                            action="https://jsonplaceholder.typicode.com/posts/"
-                            :on-preview="handlePreview"
-                            :on-remove="handleRemove"
-                            :before-remove="beforeRemove"
-                            multiple
-                            :limit="1"
-                            :on-exceed="handleExceed"
-                            :file-list="formData.url">
-                        <el-button type="primary">upload</el-button>
-                        <div slot="tip" class="el-upload__tip">jpg/png file，and not beyond 500kb</div>
-                    </el-upload>
-                </el-form-item>
+                <!--<el-form-item label="picture">-->
+                    <!--<el-upload-->
+                            <!--class="upload-demo"-->
+                            <!--action="https://jsonplaceholder.typicode.com/posts/"-->
+                            <!--:on-preview="handlePreview"-->
+                            <!--:on-remove="handleRemove"-->
+                            <!--:before-remove="beforeRemove"-->
+                            <!--multiple-->
+                            <!--:limit="1"-->
+                            <!--:on-exceed="handleExceed"-->
+                            <!--:file-list="formData.url">-->
+                        <!--<el-button type="primary">upload</el-button>-->
+                        <!--<div slot="tip" class="el-upload__tip">jpg/png file，and not beyond 500kb</div>-->
+                    <!--</el-upload>-->
+                <!--</el-form-item>-->
                 <el-form-item label="MerchandiseNumber">
                     <el-input v-model="formData.mbn"></el-input>
                 </el-form-item>

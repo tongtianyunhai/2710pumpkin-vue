@@ -3,13 +3,13 @@
 <div class="front">
 
   <div class="background">
-    <el-image :src="require('../../assets/549a5311bec6c.jpg')"  alt="">
+    <el-image :src="require('../../assets/549a5311bec6c.jpg')" alt="">
     </el-image>
   </div>
     <!--<img src="../../assets/keli.gif" alt="">-->
 
-    <el-card class="box-card" >
-      <div slot="header" class="clearfix">
+    <el-card class="box-card">
+      <div slot="header" class="clearfix" >
         <span>pumpkin</span>
       </div>
     <el-form ref="user" :model="user">

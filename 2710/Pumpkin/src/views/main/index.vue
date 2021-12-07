@@ -164,7 +164,7 @@
               <el-col :span="7">
                 <el-menu-item>
               <a style="color: #FF9040">Welcome! {{user.nickName}}</a>
-              <el-avatar :src="require('../../assets/549a5311bec6c.jpg')"></el-avatar>
+              <el-avatar :src="require(`../../assets/images/${user.url}`)"></el-avatar>
             </el-menu-item>
               </el-col>
 

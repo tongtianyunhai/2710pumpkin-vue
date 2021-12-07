@@ -3,8 +3,8 @@
     <el-header>Header</el-header>
     <el-container>
       <el-aside width=30%>
-        <div style="width:90%;height: 300px; border: solid">
-          <img src="" class="image" alt="tableData[0].merichandisePicture">
+        <div style="width:90%;height: 300px; ">
+          <img  :src="require(`E:/2710vue/2710/Pumpkin/src/assets/MerchandiseImages/${tableData1[0].merchandisePicture}`)" width="200" height="200" class="head_pic"/>
         </div>
       </el-aside>
       <el-main>

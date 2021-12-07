@@ -39,6 +39,8 @@ let detail = {
                 console.log("==============2============");
                 console.log(this.tableData2);
                 this.currentPrice=this.tableData2[0].discount*this.tableData1[0].mprice;
+                console.log("discount"+this.tableData2[0].discount);
+                console.log("mprice"+this.tableData1[0].mprice)
             });
 
             // this.formData.mName=this.$route.query.item.mname;

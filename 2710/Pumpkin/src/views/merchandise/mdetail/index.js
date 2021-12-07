@@ -46,6 +46,7 @@ let mdetail = {
             dialogVisible2: false,
             dialogVisible3: false,
             dialogVisible4: false,
+            dialogVisible5: false,
 
             //upload picture
 
