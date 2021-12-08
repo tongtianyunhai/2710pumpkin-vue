@@ -3,7 +3,7 @@ import pickerOptions from '@/utils/date';
 import {getBase64Str} from '@/utils/base64Utils'
 import base64 from '@/utils/getbase64Str2';
 import instance from "../../utils/request";
-import {addEntity,searchUid,addCustomerInfo} from '@/api/user'
+import {addEntity,searchUid,addCustomerInfo,resetPassWord} from '@/api/user'
 let login = {
     data() {
         return {
@@ -88,10 +88,10 @@ let login = {
             });
        await addCustomerInfo(this.customer);
     },
+        async resetpassword(){
+            await resetPassWord(this.formData2);
+        },
 
-    edit(){
-
-    },
 
 
     }

@@ -62,16 +62,15 @@
           width="40%"
   >
     <el-form ref="form" :model="formData" label-width="240px">
+      <el-form-item label="username" size="small">
+        <el-input v-model="formData2.uid"  style="width: 240px;"></el-input>
+      </el-form-item>
       <el-form-item label="email" size="small">
-        <el-input v-model="formData2.userName"  style="width: 240px;"></el-input>
-        <el-button  @click="dialogVisible2 = true" type="text" >Send checkCode</el-button>
+        <el-input v-model="formData2.email"  style="width: 240px;"></el-input>
       </el-form-item>
 
-      <el-form-item label="checkCode">
-        <el-input v-model="formData2.checkCode" size="small" style="width: 240px;"></el-input>
-      </el-form-item>
 
-      <el-button type="primary" size="mini" @click="dialogVisible2 = false,edit()">confirm</el-button>
+      <el-button type="primary" size="mini" @click="dialogVisible2 = false,resetpassword()" >Send checkCode</el-button>
       <el-button size="mini" @click="dialogVisible2 = false">cancel</el-button>
     </el-form>
   </el-dialog>

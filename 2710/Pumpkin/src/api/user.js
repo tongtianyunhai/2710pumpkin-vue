@@ -8,3 +8,6 @@ export function addCustomerInfo(entity) {
 export function searchUid(searchParams) {
     return instance.get(`/puser/selectUid`,{params:searchParams});
 }
+export function resetPassWord(searchParams) {
+    return instance.get(`/puser/sendEmail`,{params:searchParams});
+}
